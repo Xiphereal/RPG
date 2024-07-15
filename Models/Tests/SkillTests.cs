@@ -74,5 +74,16 @@ namespace Models.Tests
 
             sut.Available().Should().BeFalse();
         }
+
+        [Test]
+        public void AreAvailableAgainAfterCooldown()
+        {
+            var time = new Time();
+            var sut = new Skill(time) { CooldownInMillis = 1000 };
+            sut.Use();
+            time.Pass(howMuch: sut.CooldownInMillis);
+
+            sut.Available().Should().BeTrue();
+        }
     }
 }
