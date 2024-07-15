@@ -4,7 +4,6 @@ namespace Models
     public class Skill
     {
         private Time time;
-        private int remainingCooldown;
 
         public Skill(Time time)
         {
@@ -20,10 +19,12 @@ namespace Models
         public string Name { get; set; } = "Undefined";
 
         public int CooldownInMillis { get; set; }
+
+        private int remainingCooldown;
         public int RemainingCooldown
         {
             get => remainingCooldown;
-            set => remainingCooldown = Math.Clamp(value, 0, CooldownInMillis);
+            set => remainingCooldown = Math.Clamp(value, min: 0, max: CooldownInMillis);
         }
 
         public void Use()
