@@ -8,7 +8,7 @@ namespace Models
         public Skill(Time time)
         {
             this.time = time;
-            this.time.Tick += (object? sender, EventArgs e) => RemainingCooldown--;
+            this.time.Tick += (_, _) => RemainingCooldown--;
         }
 
         public string Name { get; set; } = "Undefined";
