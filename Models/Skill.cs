@@ -36,13 +36,16 @@ namespace Models
             if (!Available())
                 throw new ArgumentException();
 
-            foreach (var effect in effects)
-            {
-                effect.Apply(on);
-            }
+            effects.Apply(on);
 
+            PutOnCooldown();
+        }
+
+        private void PutOnCooldown()
+        {
             RemainingCooldown = CooldownInMillis;
         }
+
         public static Skill SubdueBy(Time time)
         {
             return new Skill(time);
