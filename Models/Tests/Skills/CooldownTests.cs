@@ -1,9 +1,9 @@
-namespace Models.Tests
+namespace Models.Tests.Skills
 {
     using FluentAssertions;
     using Models;
 
-    public class SkillCooldownTests
+    public class CooldownTests
     {
         [Test]
         public void HasUndefinedAsDefaultName()
