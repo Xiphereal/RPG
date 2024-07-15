@@ -50,5 +50,17 @@ namespace Models.Tests
             time.Pass(howMuch: ticks);
             sut.RemainingCooldown.Should().Be(sut.CooldownInMillis - ticks);
         }
+
+        [Test]
+        public void CooldownNeverUnderflows()
+        {
+            var time = new Time();
+            var sut = new Skill(time) { CooldownInMillis = 1 };
+            sut.Use();
+
+            const int ticks = 3;
+            time.Pass(howMuch: ticks);
+            sut.RemainingCooldown.Should().Be(0);
+        }
     }
 }
