@@ -3,7 +3,7 @@ namespace Models.Tests
     using FluentAssertions;
     using Models;
 
-    public class SkillTests
+    public class SkillCooldownTests
     {
         [Test]
         public void HasUndefinedAsDefaultName()
