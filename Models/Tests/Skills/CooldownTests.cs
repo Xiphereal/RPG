@@ -24,7 +24,7 @@ namespace Models.Tests.Skills
         {
             var time = new Time();
             new Skill(time) { CooldownInMillis = 1000 }
-                .RemainingCooldown
+                .RemainingCooldownInMillis
                 .Should().Be(0);
         }
 
@@ -36,7 +36,7 @@ namespace Models.Tests.Skills
 
             sut.Use();
 
-            sut.RemainingCooldown.Should().Be(sut.CooldownInMillis);
+            sut.RemainingCooldownInMillis.Should().Be(sut.CooldownInMillis);
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace Models.Tests.Skills
 
             const int ticks = 3;
             time.Pass(howMuch: ticks);
-            sut.RemainingCooldown.Should().Be(sut.CooldownInMillis - ticks);
+            sut.RemainingCooldownInMillis.Should().Be(sut.CooldownInMillis - ticks);
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace Models.Tests.Skills
 
             const int ticks = 3;
             time.Pass(howMuch: ticks);
-            sut.RemainingCooldown.Should().Be(0);
+            sut.RemainingCooldownInMillis.Should().Be(0);
         }
 
         [Test]

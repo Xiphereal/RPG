@@ -11,24 +11,24 @@ namespace Models
 
         public int CooldownInMillis { get; set; }
 
-        private int remainingCooldown;
+        private int remainingCooldownInMillis;
         private readonly HashSet<IEffect> effects = [];
 
-        public int RemainingCooldown
+        public int RemainingCooldownInMillis
         {
-            get => remainingCooldown;
-            set => remainingCooldown = Math.Clamp(value, min: 0, max: CooldownInMillis);
+            get => remainingCooldownInMillis;
+            set => remainingCooldownInMillis = Math.Clamp(value, min: 0, max: CooldownInMillis);
         }
 
         public Skill(Time time)
         {
             this.time = time;
-            this.time.Tick += (_, _) => RemainingCooldown--;
+            this.time.Tick += (_, _) => RemainingCooldownInMillis--;
         }
 
         public bool Available()
         {
-            return RemainingCooldown == 0;
+            return RemainingCooldownInMillis == 0;
         }
 
         public void Use(Target? on = null)
@@ -43,7 +43,7 @@ namespace Models
 
         private void PutOnCooldown()
         {
-            RemainingCooldown = CooldownInMillis;
+            RemainingCooldownInMillis = CooldownInMillis;
         }
 
         public static Skill SubdueBy(Time time)
