@@ -5,9 +5,10 @@ namespace Models
     {
         public event EventHandler Tick;
 
-        public void Pass()
+        public void Pass(int howMuch = 1)
         {
-            Tick(this, EventArgs.Empty);
+            for (int i = 0; i < howMuch; i++)
+                Tick(this, EventArgs.Empty);
         }
     }
 }
