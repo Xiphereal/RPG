@@ -13,14 +13,11 @@ namespace Models.Tests.Skills
                 Value = 200
             };
             Skill skill = Skill.SubdueBy(new Time()).With(damage);
-            var target = new Target()
-            {
-                Life = 200
-            };
+            var target = new Target(health: 200);
 
             skill.Use(on: target);
 
-            target.Life.Should().Be(0);
+            target.Health.Should().Be(0);
         }
 
         [Test]
@@ -31,14 +28,11 @@ namespace Models.Tests.Skills
                 Value = 200
             };
             Skill skill = Skill.SubdueBy(new Time()).With(damage);
-            var target = new Target()
-            {
-                Life = 200
-            };
+            var target = new Target(health: 200);
 
             skill.Use(on: target);
 
-            target.Life.Should().Be(400);
+            target.Health.Should().Be(400);
         }
     }
 }

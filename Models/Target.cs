@@ -4,10 +4,14 @@ namespace Models.Skills
 {
     public class Target
     {
-        public int Life { get; set; }
+        public int Health { get; private set; }
+        public Target(int health)
+        {
+            this.Health = health;
+        }
 
-        public void ReceiveDamage(int value) => Life -= value;
+        public void ReceiveDamage(int value) => Health -= value;
 
-        public void Heal(int value) => Life += value;
+        public void Heal(int value) => Health += value;
     }
 }
