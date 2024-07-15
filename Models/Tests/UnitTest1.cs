@@ -8,7 +8,13 @@ namespace Models.Tests
         [Test]
         public void HasUndefinedAsDefaultName()
         {
-            Skill.Name.Should().Be("Undefined");
+            new Skill().Name.Should().Be("Undefined");
+        }
+
+        [Test]
+        public void CanHaveItsOwnName()
+        {
+            new Skill() { Name = "Any" }.Name.Should().Be("Any");
         }
 
         [Test]
