@@ -1,13 +1,13 @@
 ﻿
+
 namespace Models.Skills
 {
     public class Target
     {
         public int Life { get; set; }
 
-        public void ReceiveDamage(int value)
-        {
-            Life -= value;
-        }
+        public void ReceiveDamage(int value) => Life -= value;
+
+        public void Heal(int value) => Life += value;
     }
 }
