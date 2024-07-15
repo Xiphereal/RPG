@@ -20,7 +20,7 @@ namespace Models.Tests
         }
 
         [Test]
-        public void StartWithLiveCooldown()
+        public void StartWithNoCooldown()
         {
             var time = new Time();
             new Skill(time) { CooldownInMillis = 1000 }
@@ -61,6 +61,18 @@ namespace Models.Tests
             const int ticks = 3;
             time.Pass(howMuch: ticks);
             sut.RemainingCooldown.Should().Be(0);
+        }
+
+        [Test]
+        public void CanNotBeUsedOnCooldown()
+        {
+            var time = new Time();
+            var sut = new Skill(time) { CooldownInMillis = 1000 };
+
+            sut.Available().Should().BeTrue();
+            sut.Use();
+
+            sut.Available().Should().BeFalse();
         }
     }
 }

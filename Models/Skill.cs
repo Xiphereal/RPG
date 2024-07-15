@@ -27,6 +27,11 @@ namespace Models
             set => remainingCooldown = Math.Clamp(value, min: 0, max: CooldownInMillis);
         }
 
+        public bool Available()
+        {
+            return RemainingCooldown == 0;
+        }
+
         public void Use()
         {
             RemainingCooldown = CooldownInMillis;
