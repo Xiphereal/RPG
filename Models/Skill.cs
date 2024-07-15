@@ -12,7 +12,7 @@ namespace Models
         public int CooldownInMillis { get; set; }
 
         private int remainingCooldown;
-        private readonly HashSet<Effect> effects = [];
+        private readonly HashSet<IEffect> effects = [];
 
         public int RemainingCooldown
         {
@@ -48,7 +48,7 @@ namespace Models
             return new Skill(time);
         }
 
-        public Skill With(Effect effect)
+        public Skill With(IEffect effect)
         {
             this.effects.Add(effect);
 

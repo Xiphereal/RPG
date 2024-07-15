@@ -8,7 +8,7 @@ namespace Models.Tests.Skills
         [Test]
         public void DealDamageToTarget()
         {
-            var damage = new Effect()
+            var damage = new Damage()
             {
                 Value = 200
             };

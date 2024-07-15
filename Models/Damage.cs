@@ -1,7 +1,7 @@
 ﻿
 namespace Models.Skills
 {
-    public class Effect
+    public class Damage : IEffect
     {
         public int Value { get; set; }
 
