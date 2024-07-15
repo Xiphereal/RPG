@@ -1,4 +1,5 @@
-﻿namespace Models
+﻿
+namespace Models
 {
     public class Skill
     {
@@ -6,5 +7,10 @@
 
         public int CooldownInMillis { get; set; }
         public int RemainingCooldown { get; set; }
+
+        public void Use()
+        {
+            RemainingCooldown = CooldownInMillis;
+        }
     }
 }
