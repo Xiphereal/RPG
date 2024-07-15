@@ -14,6 +14,9 @@ namespace Models
         private int remainingCooldownInMillis;
         private readonly HashSet<IEffect> effects = [];
 
+        private Resource resource = Resource.None;
+        private int resourceConsumption;
+
         public int RemainingCooldownInMillis
         {
             get => remainingCooldownInMillis;
@@ -38,6 +41,8 @@ namespace Models
 
             effects.Apply(on);
 
+            this.resource.Consume(this.resourceConsumption);
+
             PutOnCooldown();
         }
 
@@ -54,6 +59,14 @@ namespace Models
         public Skill With(IEffect effect)
         {
             this.effects.Add(effect);
+
+            return this;
+        }
+
+        public Skill Using(int howMuch, Resource resource)
+        {
+            this.resource = resource;
+            this.resourceConsumption = howMuch;
 
             return this;
         }
