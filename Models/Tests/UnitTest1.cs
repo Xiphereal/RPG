@@ -1,16 +1,14 @@
 namespace Models.Tests
 {
-    public class Tests
-    {
-        [SetUp]
-        public void Setup()
-        {
-        }
+    using FluentAssertions;
+    using Models;
 
+    public class SkillTests
+    {
         [Test]
-        public void Test1()
+        public void HasUndefinedAsDefaultName()
         {
-            Assert.Pass();
+            Skill.Name.Should().Be("Undefined");
         }
     }
 }
