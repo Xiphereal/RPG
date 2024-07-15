@@ -40,15 +40,20 @@ namespace Models.Tests
         }
 
         [Test]
-        public void PassingTimeReducesCooldown()
+        public void PassingTimeReducesCooldown_Linearly()
         {
             var time = new Time();
             var sut = new Skill(time) { CooldownInMillis = 1000 };
             sut.Use();
 
             time.Pass();
+            sut.RemainingCooldown.Should().Be(sut.CooldownInMillis - 1);
 
-            sut.RemainingCooldown.Should().BeLessThan(sut.CooldownInMillis);
+            time.Pass();
+            sut.RemainingCooldown.Should().Be(sut.CooldownInMillis - 2);
+
+            time.Pass();
+            sut.RemainingCooldown.Should().Be(sut.CooldownInMillis - 3);
         }
     }
 }

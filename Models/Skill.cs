@@ -13,7 +13,7 @@ namespace Models
 
         private void Time_Tick(object? sender, EventArgs e)
         {
-            RemainingCooldown = 0;
+            RemainingCooldown--;
         }
 
         public string Name { get; set; } = "Undefined";
