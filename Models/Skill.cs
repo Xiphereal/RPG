@@ -34,6 +34,9 @@ namespace Models
 
         public void Use()
         {
+            if (!Available())
+                throw new ArgumentException();
+
             RemainingCooldown = CooldownInMillis;
         }
     }
