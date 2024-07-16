@@ -10,5 +10,6 @@ namespace Models
 
         public static Character Warrior => new Warrior(health: 500);
         public ISet<Skill> Abilities { get; set; } = new HashSet<Skill>();
+        public int AttackPower { get; set; } = 20;
     }
 }

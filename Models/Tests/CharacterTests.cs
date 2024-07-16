@@ -8,6 +8,7 @@ namespace Models.Tests
         public void StartWithDefaultStats()
         {
             Character.Warrior.Health.Should().Be(500);
+            Character.Warrior.AttackPower.Should().Be(20);
         }
 
         [Test]
