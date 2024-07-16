@@ -17,6 +17,8 @@ namespace Models
         private Resource resource = Resource.None;
         private int resourceConsumption;
 
+        public static Skill Slam(Time time) => new(time) { Name = nameof(Slam) };
+
         public int RemainingCooldownInMillis
         {
             get => remainingCooldownInMillis;

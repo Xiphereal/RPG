@@ -9,5 +9,15 @@ namespace Models.Tests
         {
             Character.Warrior.Health.Should().Be(500);
         }
+
+        [Test]
+        public void WarriorStartsWithSlam()
+        {
+            var time = new Time();
+
+            Character.Warrior
+                .Abilities
+                .Should().ContainEquivalentOf(Skill.Slam(time));
+        }
     }
 }
