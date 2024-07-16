@@ -2,7 +2,7 @@
 {
     public class Warrior : Character
     {
-        internal Warrior()
+        internal Warrior(int health) : base(health)
         {
             var time = new Time();
 
