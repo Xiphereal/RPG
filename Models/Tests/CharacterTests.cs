@@ -33,5 +33,17 @@ namespace Models.Tests
                 .Abilities
                 .Should().ContainEquivalentOf(Skill.Slam(time));
         }
+
+        [Test]
+        public void WarriorLearnsChargeAtLevel2()
+        {
+            var time = new Time();
+            Character warrior = Character.Warrior;
+            warrior.LevelUp();
+
+            warrior
+                .Abilities
+                .Should().ContainEquivalentOf(Skill.Charge(time));
+        }
     }
 }

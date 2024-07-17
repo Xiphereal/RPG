@@ -10,5 +10,17 @@ namespace Models.Characters
 
             Abilities.Add(Skill.Slam(time));
         }
+
+        public override void LevelUp()
+        {
+            base.LevelUp();
+
+            switch (Level)
+            {
+                case 2:
+                    Abilities.Add(Skill.Charge(new Time()));
+                    break;
+            }
+        }
     }
 }

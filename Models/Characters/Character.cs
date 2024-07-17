@@ -13,7 +13,7 @@ namespace Models.Characters
         public int AttackPower { get; set; } = 20;
         public int Level { get; private set; } = 1;
 
-        public void LevelUp()
+        public virtual void LevelUp()
         {
             Level++;
         }

@@ -27,6 +27,13 @@ namespace Models.Skills
             return skill;
         }
 
+        public static Skill Charge(Time time)
+        {
+            Skill skill = new(time) { Name = nameof(Charge) };
+
+            return skill;
+        }
+
         public int RemainingCooldownInMillis
         {
             get => remainingCooldownInMillis;
