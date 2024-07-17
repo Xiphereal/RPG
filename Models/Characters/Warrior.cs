@@ -1,4 +1,4 @@
-﻿using Models.Skills;
+﻿using Models.Abilities;
 
 namespace Models.Characters
 {
@@ -8,7 +8,7 @@ namespace Models.Characters
         {
             var time = new Time();
 
-            Abilities.Add(Skill.Slam(time));
+            Abilities.Add(Ability.Slam(time));
         }
 
         public override void LevelUp()
@@ -18,7 +18,7 @@ namespace Models.Characters
             switch (Level)
             {
                 case 2:
-                    Abilities.Add(Skill.Charge(new Time()));
+                    Abilities.Add(Ability.Charge(new Time()));
                     break;
             }
         }

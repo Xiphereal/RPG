@@ -1,14 +1,14 @@
 ﻿using Models.Characters;
 
-namespace Models.Skills
+namespace Models.Abilities
 {
-    public class Heal : IEffect
+    public class Damage : IEffect
     {
         public int Value { get; set; }
 
         public void Apply(Target on, Character? by = null)
         {
-            on.Heal(Value);
+            on.ReceiveDamage(Value);
         }
     }
 }

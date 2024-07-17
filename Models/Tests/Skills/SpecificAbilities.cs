@@ -1,10 +1,10 @@
 ﻿using FluentAssertions;
+using Models.Abilities;
 using Models.Characters;
-using Models.Skills;
 
-namespace Models.Tests.Skills
+namespace Models.Tests.Abilities
 {
-    public class SpecificSkills
+    public class SpecificAbilities
     {
         [Test]
         public void SlamDealsDamageBasedOnAttackPower()
@@ -13,7 +13,7 @@ namespace Models.Tests.Skills
             var caster = Character.Warrior;
             var target = Character.Warrior;
 
-            Skill.Slam(time).Use(by: caster, on: target);
+            Ability.Slam(time).Use(by: caster, on: target);
 
             int damage = Character.Warrior.Health - target.Health;
             damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.35));
@@ -28,7 +28,7 @@ namespace Models.Tests.Skills
             var target = Character.Warrior;
 
             // Act
-            Skill.Charge(time).Use(by: caster, on: target);
+            Ability.Charge(time).Use(by: caster, on: target);
 
             // Assert
             int damage = Character.Warrior.Health - target.Health;

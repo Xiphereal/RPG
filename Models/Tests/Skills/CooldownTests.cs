@@ -1,8 +1,8 @@
-namespace Models.Tests.Skills
+namespace Models.Tests.Abilities
 {
     using FluentAssertions;
     using Models;
-    using Models.Skills;
+    using Models.Abilities;
 
     public class CooldownTests
     {
@@ -10,21 +10,21 @@ namespace Models.Tests.Skills
         public void HasUndefinedAsDefaultName()
         {
             var time = new Time();
-            new Skill(time).Name.Should().Be("Undefined");
+            new Ability(time).Name.Should().Be("Undefined");
         }
 
         [Test]
         public void CanHaveItsOwnName()
         {
             var time = new Time();
-            new Skill(time) { Name = "Any" }.Name.Should().Be("Any");
+            new Ability(time) { Name = "Any" }.Name.Should().Be("Any");
         }
 
         [Test]
         public void StartWithNoCooldown()
         {
             var time = new Time();
-            new Skill(time) { CooldownInMillis = 1000 }
+            new Ability(time) { CooldownInMillis = 1000 }
                 .RemainingCooldownInMillis
                 .Should().Be(0);
         }
@@ -33,7 +33,7 @@ namespace Models.Tests.Skills
         public void Using_aSkill_PutsItOnCooldown()
         {
             var time = new Time();
-            var sut = new Skill(time) { CooldownInMillis = 1000 };
+            var sut = new Ability(time) { CooldownInMillis = 1000 };
 
             sut.Use();
 
@@ -44,7 +44,7 @@ namespace Models.Tests.Skills
         public void PassingTimeReducesCooldown_Linearly()
         {
             var time = new Time();
-            var sut = new Skill(time) { CooldownInMillis = 1000 };
+            var sut = new Ability(time) { CooldownInMillis = 1000 };
             sut.Use();
 
             const int ticks = 3;
@@ -56,7 +56,7 @@ namespace Models.Tests.Skills
         public void CooldownNeverUnderflows()
         {
             var time = new Time();
-            var sut = new Skill(time) { CooldownInMillis = 1 };
+            var sut = new Ability(time) { CooldownInMillis = 1 };
             sut.Use();
 
             const int ticks = 3;
@@ -68,7 +68,7 @@ namespace Models.Tests.Skills
         public void CanNotBeUsedOnCooldown()
         {
             var time = new Time();
-            var sut = new Skill(time) { CooldownInMillis = 1000 };
+            var sut = new Ability(time) { CooldownInMillis = 1000 };
 
             sut.Available().Should().BeTrue();
             sut.Use();
@@ -80,7 +80,7 @@ namespace Models.Tests.Skills
         public void AreAvailableAgainAfterCooldown()
         {
             var time = new Time();
-            var sut = new Skill(time) { CooldownInMillis = 1000 };
+            var sut = new Ability(time) { CooldownInMillis = 1000 };
             sut.Use();
             time.Pass(howMuch: sut.CooldownInMillis);
 

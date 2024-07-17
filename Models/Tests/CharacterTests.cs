@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
+using Models.Abilities;
 using Models.Characters;
-using Models.Skills;
 
 namespace Models.Tests
 {
@@ -31,7 +31,7 @@ namespace Models.Tests
 
             Character.Warrior
                 .Abilities
-                .Should().ContainEquivalentOf(Skill.Slam(time));
+                .Should().ContainEquivalentOf(Ability.Slam(time));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace Models.Tests
 
             warrior
                 .Abilities
-                .Should().ContainEquivalentOf(Skill.Charge(time));
+                .Should().ContainEquivalentOf(Ability.Charge(time));
         }
     }
 }

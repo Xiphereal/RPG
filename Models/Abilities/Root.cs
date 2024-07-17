@@ -1,6 +1,6 @@
 ﻿using Models.Characters;
 
-namespace Models.Skills
+namespace Models.Abilities
 {
     internal class Root : IEffect
     {

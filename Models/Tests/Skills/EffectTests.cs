@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
+using Models.Abilities;
 using Models.Characters;
-using Models.Skills;
 
-namespace Models.Tests.Skills
+namespace Models.Tests.Abilities
 {
     public class EffectTests
     {
@@ -13,10 +13,10 @@ namespace Models.Tests.Skills
             {
                 Value = 200
             };
-            Skill skill = Skill.SubdueBy(new Time()).With(damage);
+            Ability ability = Ability.SubdueBy(new Time()).With(damage);
             var target = new Target(health: 200);
 
-            skill.Use(on: target);
+            ability.Use(on: target);
 
             target.Health.Should().Be(0);
         }
@@ -28,10 +28,10 @@ namespace Models.Tests.Skills
             {
                 Value = 200
             };
-            Skill skill = Skill.SubdueBy(new Time()).With(damage);
+            Ability ability = Ability.SubdueBy(new Time()).With(damage);
             var target = new Target(health: 200);
 
-            skill.Use(on: target);
+            ability.Use(on: target);
 
             target.Health.Should().Be(400);
         }

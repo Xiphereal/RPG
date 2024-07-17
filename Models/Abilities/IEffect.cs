@@ -1,6 +1,6 @@
 ﻿using Models.Characters;
 
-namespace Models.Skills
+namespace Models.Abilities
 {
     public interface IEffect
     {

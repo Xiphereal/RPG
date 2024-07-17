@@ -1,8 +1,8 @@
 ﻿using Models.Characters;
 
-namespace Models.Skills
+namespace Models.Abilities
 {
-    public class Skill
+    public class Ability
     {
         private Time time;
 
@@ -16,28 +16,28 @@ namespace Models.Skills
         private Resource resource = Resource.None;
         private int resourceConsumption;
 
-        public static Skill Slam(Time time)
+        public static Ability Slam(Time time)
         {
-            Skill skill = new(time) { Name = nameof(Slam) };
-            skill.With(new AttackPowerCoefficientBasedDamage()
+            Ability ability = new(time) { Name = nameof(Slam) };
+            ability.With(new AttackPowerCoefficientBasedDamage()
             {
                 Coefficient = 0.35
             });
 
-            return skill;
+            return ability;
         }
 
-        public static Skill Charge(Time time)
+        public static Ability Charge(Time time)
         {
-            Skill skill = new(time) { Name = nameof(Charge) };
-            skill
+            Ability ability = new(time) { Name = nameof(Charge) };
+            ability
                 .With(new AttackPowerCoefficientBasedDamage()
                 {
                     Coefficient = 0.21
                 })
                 .With(new Root());
 
-            return skill;
+            return ability;
         }
 
         public int RemainingCooldownInMillis
@@ -46,7 +46,7 @@ namespace Models.Skills
             set => remainingCooldownInMillis = Math.Clamp(value, min: 0, max: CooldownInMillis);
         }
 
-        public Skill(Time time)
+        public Ability(Time time)
         {
             this.time = time;
             this.time.Tick += (_, _) => RemainingCooldownInMillis--;
@@ -74,19 +74,19 @@ namespace Models.Skills
             RemainingCooldownInMillis = CooldownInMillis;
         }
 
-        public static Skill SubdueBy(Time time)
+        public static Ability SubdueBy(Time time)
         {
-            return new Skill(time);
+            return new Ability(time);
         }
 
-        public Skill With(IEffect effect)
+        public Ability With(IEffect effect)
         {
             effects.Add(effect);
 
             return this;
         }
 
-        public Skill Using(int howMuch, Resource resource)
+        public Ability Using(int howMuch, Resource resource)
         {
             this.resource = resource;
             resourceConsumption = howMuch;

@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
+using Models.Abilities;
 using Models.Characters;
-using Models.Skills;
 
-namespace Models.Tests.Skills
+namespace Models.Tests.Abilities
 {
     public class ResourceManagementTests
     {
@@ -12,7 +12,7 @@ namespace Models.Tests.Skills
             var time = new Time();
             Resource resource = Resource.Energy;
             resource.Value.Should().Be(resource.MaxValue);
-            var sut = Skill
+            var sut = Ability
                 .SubdueBy(time)
                 .Using(20, resource);
 
