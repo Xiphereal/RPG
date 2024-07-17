@@ -11,6 +11,7 @@ namespace Models.Tests
         {
             Character.Warrior.Health.Should().Be(500);
             Character.Warrior.AttackPower.Should().Be(20);
+            Character.Warrior.Level.Should().Be(1);
         }
 
         [Test]
