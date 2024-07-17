@@ -20,9 +20,9 @@ namespace Models
         public static Skill Slam(Time time)
         {
             Skill skill = new(time) { Name = nameof(Slam) };
-            skill.With(new Damage()
+            skill.With(new AttackPowerCoefficientBasedDamage()
             {
-                Value = 80
+                Coefficient = 0.35
             });
 
             return skill;
@@ -45,12 +45,12 @@ namespace Models
             return RemainingCooldownInMillis == 0;
         }
 
-        public void Use(Target? on = null)
+        public void Use(Character? by = null, Target? on = null)
         {
             if (!Available())
                 throw new ArgumentException();
 
-            effects.Apply(on);
+            effects.Apply(by, on);
 
             this.resource.Consume(this.resourceConsumption);
 

@@ -4,10 +4,13 @@ namespace Models
 {
     public static class EffectsExtensions
     {
-        public static void Apply(this IEnumerable<IEffect> effects, Target? on)
+        public static void Apply(
+            this IEnumerable<IEffect> effects,
+            Character? by,
+            Target? on)
         {
             foreach (var effect in effects)
-                effect.Apply(on);
+                effect.Apply(on, by);
         }
     }
 }

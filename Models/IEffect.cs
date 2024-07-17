@@ -4,6 +4,6 @@ namespace Models
 {
     public interface IEffect
     {
-        void Apply(Target on);
+        void Apply(Target on, Character? by = null);
     }
 }
