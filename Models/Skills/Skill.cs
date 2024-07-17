@@ -30,6 +30,12 @@ namespace Models.Skills
         public static Skill Charge(Time time)
         {
             Skill skill = new(time) { Name = nameof(Charge) };
+            skill
+                .With(new AttackPowerCoefficientBasedDamage()
+                {
+                    Coefficient = 0.21
+                })
+                .With(new Root());
 
             return skill;
         }
