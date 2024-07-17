@@ -15,6 +15,16 @@ namespace Models.Tests
         }
 
         [Test]
+        public void CanLevelUp()
+        {
+            Character character = Character.Warrior;
+
+            character.LevelUp();
+
+            character.Level.Should().Be(2);
+        }
+
+        [Test]
         public void WarriorStartsWithSlam()
         {
             var time = new Time();
