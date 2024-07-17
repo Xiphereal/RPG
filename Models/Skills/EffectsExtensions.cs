@@ -1,4 +1,6 @@
-﻿namespace Models.Skills
+﻿using Models.Characters;
+
+namespace Models.Skills
 {
     public static class EffectsExtensions
     {

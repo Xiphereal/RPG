@@ -1,13 +1,11 @@
-﻿
-
-namespace Models.Skills
+﻿namespace Models.Characters
 {
     public class Target
     {
         public int Health { get; private set; }
         public Target(int health)
         {
-            this.Health = health;
+            Health = health;
         }
 
         public void ReceiveDamage(int value) => Health -= value;

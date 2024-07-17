@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace Models.Characters
 {
     internal class Energy : Resource
     {

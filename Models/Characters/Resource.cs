@@ -1,5 +1,4 @@
-﻿
-namespace Models
+﻿namespace Models.Characters
 {
     public abstract class Resource
     {

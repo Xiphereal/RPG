@@ -1,6 +1,6 @@
 ﻿using Models.Skills;
 
-namespace Models
+namespace Models.Characters
 {
     public class Character : Target
     {
