@@ -1,5 +1,4 @@
-﻿
-namespace Models.Skills
+﻿namespace Models.Skills
 {
     public class Heal : IEffect
     {

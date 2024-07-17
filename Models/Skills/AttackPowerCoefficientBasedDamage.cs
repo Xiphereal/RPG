@@ -1,6 +1,4 @@
-﻿using Models.Skills;
-
-namespace Models
+﻿namespace Models.Skills
 {
     public class AttackPowerCoefficientBasedDamage : IEffect
     {

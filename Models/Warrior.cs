@@ -1,4 +1,6 @@
-﻿namespace Models
+﻿using Models.Skills;
+
+namespace Models
 {
     public class Warrior : Character
     {

@@ -2,6 +2,7 @@ namespace Models.Tests.Skills
 {
     using FluentAssertions;
     using Models;
+    using Models.Skills;
 
     public class CooldownTests
     {

@@ -1,7 +1,4 @@
-﻿
-using Models.Skills;
-
-namespace Models
+﻿namespace Models.Skills
 {
     public class Skill
     {
@@ -52,7 +49,7 @@ namespace Models
 
             effects.Apply(by, on);
 
-            this.resource.Consume(this.resourceConsumption);
+            resource.Consume(resourceConsumption);
 
             PutOnCooldown();
         }
@@ -69,7 +66,7 @@ namespace Models
 
         public Skill With(IEffect effect)
         {
-            this.effects.Add(effect);
+            effects.Add(effect);
 
             return this;
         }
@@ -77,7 +74,7 @@ namespace Models
         public Skill Using(int howMuch, Resource resource)
         {
             this.resource = resource;
-            this.resourceConsumption = howMuch;
+            resourceConsumption = howMuch;
 
             return this;
         }

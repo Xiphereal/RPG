@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using Models.Skills;
 
 namespace Models.Tests
 {
