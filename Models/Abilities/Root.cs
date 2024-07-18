@@ -2,27 +2,14 @@
 
 namespace Models.Abilities
 {
-    public class Root : IEffect
+    public class Root : Debuff
     {
-        public int DurationInMilis { get; set; }
-        public bool IsExpired { get; set; }
-
-        public void AffectedBy(Time time)
-        {
-            time.Tick += (_, _) =>
-            {
-                DurationInMilis--;
-
-                IsExpired = DurationInMilis <= 0;
-            };
-        }
-
-        public void Apply(Target on, Character? by = null)
+        public override void Apply(Target on, Character? by = null)
         {
             on.Root();
         }
 
-        public void Expire(Target on)
+        public override void Expire(Target on)
         {
             on.Unroot();
         }
