@@ -48,6 +48,7 @@ namespace Models.Tests.Abilities
             character.Apply(root);
 
             character.Debuffs.Should().Contain(root);
+            character.IsRooted.Should().BeTrue();
         }
 
         [Test]

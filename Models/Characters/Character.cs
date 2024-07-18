@@ -21,6 +21,7 @@ namespace Models.Characters
 
         public void Apply(IEffect debuff)
         {
+            debuff.Apply(on: this);
             Debuffs.Add(debuff);
         }
 
