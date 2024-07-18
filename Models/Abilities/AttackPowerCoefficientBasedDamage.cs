@@ -4,6 +4,7 @@ namespace Models.Abilities
 {
     public class AttackPowerCoefficientBasedDamage : IEffect
     {
+        public bool IsExpired { get; set; }
         private Time? time;
         public double Coefficient { get; set; }
 

@@ -6,6 +6,7 @@ namespace Models.Abilities
     {
         private Time? time;
         public int Value { get; set; }
+        public bool IsExpired { get; set; }
 
         public void AffectedBy(Time time)
         {

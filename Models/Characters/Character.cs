@@ -14,6 +14,11 @@ namespace Models.Characters
         public int Level { get; private set; } = 1;
         public List<IEffect> Debuffs { get; set; } = [];
 
+        public void AffectedBy(Time time)
+        {
+            time.Tick += (_, _) => Debuffs.RemoveAll(x => x.IsExpired);
+        }
+
         public void Apply(IEffect debuff)
         {
             Debuffs.Add(debuff);

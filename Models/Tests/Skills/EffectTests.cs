@@ -49,5 +49,38 @@ namespace Models.Tests.Abilities
 
             character.Debuffs.Should().Contain(root);
         }
+
+        [Test]
+        public void Debuffs_ExpireOverTime()
+        {
+            var root = new Root()
+            {
+                DurationInMilis = 1000
+            };
+            Time time = new Time();
+            root.AffectedBy(time);
+
+            time.Pass(root.DurationInMilis);
+
+            root.IsExpired.Should().BeTrue();
+        }
+
+        [Test]
+        public void CharacterDebuffs_AreRemovedWhenExpired()
+        {
+            var character = Character.Warrior;
+            var root = new Root()
+            {
+                DurationInMilis = 1000
+            };
+            Time time = new Time();
+            root.AffectedBy(time);
+            character.Apply(root);
+            character.AffectedBy(time);
+
+            time.Pass(root.DurationInMilis);
+
+            character.Debuffs.Should().BeEmpty();
+        }
     }
 }
