@@ -9,7 +9,7 @@ namespace Models.Characters
         internal Warrior(int health) : base(health)
         {
             var time = new Time();
-            resource = new Rage();
+            resource = Resource.Rage;
 
             Abilities.Add(Ability.Slam(time));
         }

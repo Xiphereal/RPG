@@ -18,7 +18,7 @@ namespace Models.Tests.Abilities
 
             sut.Use(by: caster);
 
-            caster.Rage.Value.Should().BeLessThan(Character.Warrior.Rage.MaxValue);
+            caster.Rage.Value.Should().BeLessThan(Resource.Rage.MaxValue);
         }
     }
 }

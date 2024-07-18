@@ -3,6 +3,7 @@ namespace Models.Characters
 {
     public abstract class Resource
     {
+        public static Resource Rage => new Rage();
         public static Resource Energy => new Energy();
 
         public static Resource None => new Energy();
