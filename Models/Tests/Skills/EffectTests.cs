@@ -24,16 +24,30 @@ namespace Models.Tests.Abilities
         [Test]
         public void HealsTarget()
         {
-            var damage = new Heal()
+            var heal = new Heal()
             {
                 Value = 200
             };
-            Ability ability = Ability.SubdueBy(new Time()).With(damage);
+            Ability ability = Ability.SubdueBy(new Time()).With(heal);
             var target = new Target(health: 200);
 
             ability.Use(on: target);
 
             target.Health.Should().Be(400);
+        }
+
+        [Test]
+        public void Characters_CanBeDebuffed()
+        {
+            var character = Character.Warrior;
+            var root = new Root()
+            {
+                DurationInMilis = 1000
+            };
+
+            character.Apply(root);
+
+            character.Debuffs.Should().Contain(root);
         }
     }
 }

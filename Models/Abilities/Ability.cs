@@ -81,6 +81,7 @@ namespace Models.Abilities
 
         public Ability With(IEffect effect)
         {
+            effect.AffectedBy(time);
             effects.Add(effect);
 
             return this;

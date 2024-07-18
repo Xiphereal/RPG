@@ -4,7 +4,13 @@ namespace Models.Abilities
 {
     public class AttackPowerCoefficientBasedDamage : IEffect
     {
+        private Time? time;
         public double Coefficient { get; set; }
+
+        public void AffectedBy(Time time)
+        {
+            this.time = time;
+        }
 
         public void Apply(Target on, Character? by = null)
         {
