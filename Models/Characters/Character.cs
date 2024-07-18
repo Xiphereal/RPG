@@ -2,12 +2,13 @@
 
 namespace Models.Characters
 {
-    public class Character : Target
+    public abstract class Character : Target
     {
-        protected Resource resource = Resource.None;
+        protected Resource resource;
 
-        public Character(int health) : base(health)
+        protected Character(int health, Resource resource) : base(health)
         {
+            this.resource = resource;
         }
 
         public static Warrior Warrior => new Warrior(health: 500);
@@ -20,9 +21,9 @@ namespace Models.Characters
             Level++;
         }
 
-        public void ConsumeResource(int resourceConsumption)
+        public void ConsumeResource(int howMuch)
         {
-            this.resource.Consume(resourceConsumption);
+            this.resource.Consume(howMuch);
         }
     }
 }

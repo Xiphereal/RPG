@@ -6,10 +6,9 @@ namespace Models.Characters
     {
         public Resource Rage => resource;
 
-        internal Warrior(int health) : base(health)
+        internal Warrior(int health) : base(health, Resource.Rage)
         {
             var time = new Time();
-            resource = Resource.Rage;
 
             Abilities.Add(Ability.Slam(time));
         }
