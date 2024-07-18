@@ -39,15 +39,19 @@ namespace Models.Tests.Abilities
         [Test]
         public void Characters_CanBeDebuffed()
         {
+            var time = new Time();
             var character = Character.Warrior;
+            character.AffectedBy(time);
             var root = new Root()
             {
                 DurationInMilis = 1000
             };
+            root.AffectedBy(time);
 
             character.Apply(root);
 
             character.Debuffs.Should().Contain(root);
+            time.Pass();
             character.IsRooted.Should().BeTrue();
         }
 
@@ -80,6 +84,8 @@ namespace Models.Tests.Abilities
             var character = Character.Warrior;
             character.Apply(root);
             character.AffectedBy(time);
+
+            time.Pass();
             character.IsRooted.Should().BeTrue();
 
             // Act

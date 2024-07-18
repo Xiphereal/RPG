@@ -16,8 +16,12 @@ namespace Models.Abilities
                 IsExpired = DurationInMilis <= 0;
             };
         }
+        public abstract void Tick(Target on);
 
-        public abstract void Apply(Target on, Character? by = null);
+        public void Apply(Target on, Character? by = null)
+        {
+            on.Apply(this);
+        }
 
         public abstract void Expire(Target on);
     }

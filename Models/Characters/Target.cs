@@ -6,7 +6,7 @@ namespace Models.Characters
     {
         public int Health { get; private set; }
         public bool IsRooted { get; private set; }
-        public List<IEffect> Debuffs { get; set; } = [];
+        public List<Debuff> Debuffs { get; set; } = [];
         public Target(int health)
         {
             Health = health;
@@ -26,9 +26,8 @@ namespace Models.Characters
             IsRooted = false;
         }
 
-        public void Apply(IEffect debuff)
+        public void Apply(Debuff debuff)
         {
-            debuff.Apply(on: this);
             Debuffs.Add(debuff);
         }
 
@@ -36,6 +35,8 @@ namespace Models.Characters
         {
             time.Tick += (_, _) =>
             {
+                Debuffs.ForEach(x => x.Tick(this));
+
                 Debuffs
                     .Where(x => x.IsExpired).ToList()
                     .ForEach(x => x.Expire(on: this));

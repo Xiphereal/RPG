@@ -20,12 +20,13 @@ namespace Models.Tests.Abilities
         }
 
         [Test]
-        public void ChargeDealsDamageBasedOnAttackPower_AndRootsTarget()
+        public void ChargeDealsDamageBasedOnAttackPower_AndRootsTargetFor1sec()
         {
             // Arrange
             var time = new Time();
             var caster = Character.Warrior;
             var target = Character.Warrior;
+            target.AffectedBy(time);
 
             // Act
             Ability.Charge(time).Use(by: caster, on: target);
@@ -34,7 +35,11 @@ namespace Models.Tests.Abilities
             int damage = Character.Warrior.Health - target.Health;
             damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.21));
 
+            time.Pass();
             target.IsRooted.Should().BeTrue();
+
+            time.Pass(1000);
+            target.IsRooted.Should().BeFalse();
         }
 
         private int ToInt(double value)
