@@ -21,5 +21,10 @@ namespace Models.Abilities
         {
             on.Root();
         }
+
+        public void Expire(Target on)
+        {
+            on.Unroot();
+        }
     }
 }

@@ -30,12 +30,16 @@ namespace Models.Abilities
         public static Ability Charge(Time time)
         {
             Ability ability = new(time) { Name = nameof(Charge) };
+
+            Root root = new Root();
+            root.AffectedBy(time);
+
             ability
                 .With(new AttackPowerCoefficientBasedDamage()
                 {
                     Coefficient = 0.21
                 })
-                .With(new Root());
+                .With(root);
 
             return ability;
         }

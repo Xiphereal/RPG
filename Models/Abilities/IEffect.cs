@@ -8,5 +8,6 @@ namespace Models.Abilities
 
         void AffectedBy(Time time);
         void Apply(Target on, Character? by = null);
+        void Expire(Target on);
     }
 }

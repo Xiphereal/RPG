@@ -18,5 +18,10 @@ namespace Models.Abilities
         {
             on.Heal(Value);
         }
+
+        public void Expire(Target on)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

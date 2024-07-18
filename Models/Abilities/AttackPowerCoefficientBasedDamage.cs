@@ -22,5 +22,10 @@ namespace Models.Abilities
         {
             return (int)Math.Round(value);
         }
+
+        public void Expire(Target on)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

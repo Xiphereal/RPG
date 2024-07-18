@@ -15,5 +15,10 @@ namespace Models.Abilities
         {
             on.ReceiveDamage(Value);
         }
+
+        public void Expire(Target on)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
