@@ -3,6 +3,7 @@ namespace Models.Tests.Abilities
     using FluentAssertions;
     using Models;
     using Models.Abilities;
+    using Models.Characters;
 
     public class CooldownTests
     {
@@ -35,7 +36,7 @@ namespace Models.Tests.Abilities
             var time = new Time();
             var sut = new Ability(time) { CooldownInMillis = 1000 };
 
-            sut.Use();
+            sut.Use(by: Character.Warrior);
 
             sut.RemainingCooldownInMillis.Should().Be(sut.CooldownInMillis);
         }
@@ -45,7 +46,7 @@ namespace Models.Tests.Abilities
         {
             var time = new Time();
             var sut = new Ability(time) { CooldownInMillis = 1000 };
-            sut.Use();
+            sut.Use(by: Character.Warrior);
 
             const int ticks = 3;
             time.Pass(howMuch: ticks);
@@ -57,7 +58,7 @@ namespace Models.Tests.Abilities
         {
             var time = new Time();
             var sut = new Ability(time) { CooldownInMillis = 1 };
-            sut.Use();
+            sut.Use(by: Character.Warrior);
 
             const int ticks = 3;
             time.Pass(howMuch: ticks);
@@ -71,7 +72,7 @@ namespace Models.Tests.Abilities
             var sut = new Ability(time) { CooldownInMillis = 1000 };
 
             sut.Available().Should().BeTrue();
-            sut.Use();
+            sut.Use(by: Character.Warrior);
 
             sut.Available().Should().BeFalse();
         }
@@ -81,7 +82,7 @@ namespace Models.Tests.Abilities
         {
             var time = new Time();
             var sut = new Ability(time) { CooldownInMillis = 1000 };
-            sut.Use();
+            sut.Use(by: Character.Warrior);
             time.Pass(howMuch: sut.CooldownInMillis);
 
             sut.Available().Should().BeTrue();

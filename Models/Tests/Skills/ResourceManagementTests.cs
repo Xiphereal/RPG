@@ -10,15 +10,15 @@ namespace Models.Tests.Abilities
         public void ConsumesResources()
         {
             var time = new Time();
-            Resource resource = Resource.Energy;
-            resource.Value.Should().Be(resource.MaxValue);
             var sut = Ability
                 .SubdueBy(time)
-                .Using(20, resource);
+                .Cost(20);
+            var caster = Character.Warrior;
+            caster.GenerateRage(100);
 
-            sut.Use();
+            sut.Use(by: caster);
 
-            resource.Value.Should().BeLessThan(resource.MaxValue);
+            caster.Rage.Value.Should().BeLessThan(Character.Warrior.Rage.MaxValue);
         }
     }
 }

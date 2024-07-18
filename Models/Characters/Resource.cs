@@ -1,4 +1,5 @@
-﻿namespace Models.Characters
+﻿
+namespace Models.Characters
 {
     public abstract class Resource
     {
@@ -12,6 +13,11 @@
         public void Consume(int resourceConsumption)
         {
             Value -= resourceConsumption;
+        }
+
+        public void Gain(int howMuch)
+        {
+            Value += howMuch;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Models.Tests.Abilities
             Ability ability = Ability.SubdueBy(new Time()).With(damage);
             var target = new Target(health: 200);
 
-            ability.Use(on: target);
+            ability.Use(by: Character.Warrior, on: target);
 
             target.Health.Should().Be(0);
         }
@@ -31,7 +31,7 @@ namespace Models.Tests.Abilities
             Ability ability = Ability.SubdueBy(new Time()).With(heal);
             var target = new Target(health: 200);
 
-            ability.Use(on: target);
+            ability.Use(by: Character.Warrior, on: target);
 
             target.Health.Should().Be(400);
         }

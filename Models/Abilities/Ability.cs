@@ -13,16 +13,17 @@ namespace Models.Abilities
         private int remainingCooldownInMillis;
         private readonly HashSet<IEffect> effects = [];
 
-        private Resource resource = Resource.None;
         private int resourceConsumption;
 
         public static Ability Slam(Time time)
         {
             Ability ability = new(time) { Name = nameof(Slam) };
-            ability.With(new AttackPowerCoefficientBasedDamage()
-            {
-                Coefficient = 0.35
-            });
+            ability
+                .With(new AttackPowerCoefficientBasedDamage()
+                {
+                    Coefficient = 0.35
+                })
+                .Cost(howMuch: 20);
 
             return ability;
         }
@@ -61,14 +62,14 @@ namespace Models.Abilities
             return RemainingCooldownInMillis == 0;
         }
 
-        public void Use(Character? by = null, Target? on = null)
+        public void Use(Character by, Target? on = null)
         {
             if (!Available())
                 throw new ArgumentException();
 
             effects.Apply(by, on);
 
-            resource.Consume(resourceConsumption);
+            by.ConsumeResource(resourceConsumption);
 
             PutOnCooldown();
         }
@@ -91,9 +92,8 @@ namespace Models.Abilities
             return this;
         }
 
-        public Ability Using(int howMuch, Resource resource)
+        public Ability Cost(int howMuch)
         {
-            this.resource = resource;
             resourceConsumption = howMuch;
 
             return this;

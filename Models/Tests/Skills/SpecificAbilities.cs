@@ -9,7 +9,7 @@ namespace Models.Tests.Abilities
         private const int OneSecond = 1000;
 
         [Test]
-        public void SlamDealsDamageBasedOnAttackPower()
+        public void Slam_DealsDamageBasedOnAttackPower()
         {
             var time = new Time();
             var caster = Character.Warrior;
@@ -22,7 +22,20 @@ namespace Models.Tests.Abilities
         }
 
         [Test]
-        public void ChargeDealsDamageBasedOnAttackPower_AndRootsTargetFor1sec()
+        public void Slam_Consumes20Rage()
+        {
+            var time = new Time();
+            var caster = Character.Warrior;
+            var target = Character.Warrior;
+            caster.GenerateRage(100);
+
+            Ability.Slam(time).Use(by: caster, on: target);
+
+            caster.Rage.Value.Should().Be(80);
+        }
+
+        [Test]
+        public void Charge_DealsDamageBasedOnAttackPower_AndRootsTargetFor1sec()
         {
             // Arrange
             var time = new Time();
