@@ -6,6 +6,8 @@ namespace Models.Tests.Abilities
 {
     public class SpecificAbilities
     {
+        private const int OneSecond = 1000;
+
         [Test]
         public void SlamDealsDamageBasedOnAttackPower()
         {
@@ -38,7 +40,7 @@ namespace Models.Tests.Abilities
             time.Pass();
             target.IsRooted.Should().BeTrue();
 
-            time.Pass(1000);
+            time.Pass(OneSecond);
             target.IsRooted.Should().BeFalse();
         }
 
