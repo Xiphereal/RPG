@@ -39,6 +39,9 @@ namespace Models.Characters
             this.resource.Consume(howMuch);
         }
 
-
+        public void GenerateResource(int howMuch)
+        {
+            this.resource.Gain(howMuch);
+        }
     }
 }

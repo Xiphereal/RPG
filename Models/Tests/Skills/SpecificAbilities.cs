@@ -57,6 +57,23 @@ namespace Models.Tests.Abilities
             target.IsRooted.Should().BeFalse();
         }
 
+        [Test]
+        public void Charge_Generates20Rage()
+        {
+            // Arrange
+            var time = new Time();
+            var caster = Character.Warrior;
+            var target = Character.Warrior;
+            target.AffectedBy(time);
+            var previusRage = caster.Rage.Value;
+
+            // Act
+            Ability.Charge(time).Use(by: caster, on: target);
+
+            // Assert
+            caster.Rage.Value.Should().BeGreaterThan(previusRage);
+        }
+
         private int ToInt(double value)
         {
             return (int)Math.Round(value);

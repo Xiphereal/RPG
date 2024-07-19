@@ -40,7 +40,8 @@ namespace Models.Abilities
                 {
                     Coefficient = 0.21
                 })
-                .With(root);
+                .With(root)
+                .With(new ResourceGeneration() { Value = 20 });
 
             return ability;
         }
