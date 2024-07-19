@@ -24,6 +24,39 @@ namespace Models.Tests
             character.Level.Should().Be(2);
         }
 
+
+        [Test]
+        public void LevelUpByExperience()
+        {
+            Character character = Character.Warrior;
+
+            character.GainExp(100);
+
+            character.Level.Should().Be(2);
+        }
+
+        [Test]
+        public void DoesNotLevelUp_IfNotEnoughtExperience()
+        {
+            Character character = Character.Warrior;
+
+            character.GainExp(50);
+
+            character.Level.Should().Be(1);
+        }
+
+        [Test]
+        public void ExperienceIsAcumulative()
+        {
+            Character character = Character.Warrior;
+
+            character.GainExp(50);
+            character.Level.Should().Be(1);
+
+            character.GainExp(50);
+            character.Level.Should().Be(2);
+        }
+
         [Test]
         public void WarriorStartsWithSlam()
         {
