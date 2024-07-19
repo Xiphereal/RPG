@@ -24,7 +24,6 @@ namespace Models.Tests
             character.Level.Should().Be(2);
         }
 
-
         [Test]
         public void LevelUpByExperience()
         {
@@ -55,6 +54,17 @@ namespace Models.Tests
 
             character.GainExp(50);
             character.Level.Should().Be(2);
+        }
+
+        [Test]
+        public void ExperienceIsResetAfterLevelUp()
+        {
+            Character character = Character.Warrior;
+
+            character.GainExp(100);
+            character.Level.Should().Be(2);
+
+            character.Experience.Should().Be(0);
         }
 
         [Test]
