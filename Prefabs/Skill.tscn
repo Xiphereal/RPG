@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx10o7vl1ury5"]
+
+[ext_resource type="Texture2D" uid="uid://blixkb2ckthbj" path="res://Assets/Slam.jpg" id="1_lolj3"]
+
+[node name="Skill1" type="PanelContainer"]
+custom_minimum_size = Vector2(40, 40)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_lolj3")
+expand_mode = 1
+
+[node name="Binding" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "1"
+horizontal_alignment = 2
