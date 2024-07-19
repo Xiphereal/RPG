@@ -68,6 +68,18 @@ namespace Models.Tests
         }
 
         [Test]
+        public void ExperienceRequiredForLevelUp_IsIncreasedForEachLevel()
+        {
+            Character character = Character.Warrior;
+
+            int previousRequirement = character.ExperienceRequiredForLevelUp;
+            character.LevelUp();
+
+            character.ExperienceRequiredForLevelUp
+                .Should().BeGreaterThan(previousRequirement);
+        }
+
+        [Test]
         public void WarriorStartsWithSlam()
         {
             var time = new Time();
