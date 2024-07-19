@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using FluentAssertions.Extensions;
 using Models.Abilities;
 using Models.Characters;
 
@@ -72,6 +73,16 @@ namespace Models.Tests.Abilities
 
             // Assert
             caster.Rage.Value.Should().BeGreaterThan(previusRage);
+        }
+
+        [Test]
+        public void Charge_Has20secCooldown()
+        {
+            var time = new Time();
+
+            Ability.Charge(time)
+                .CooldownInMillis
+                .Should().Be(ToInt(20.Seconds().TotalMilliseconds));
         }
 
         private int ToInt(double value)

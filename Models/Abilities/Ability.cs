@@ -4,6 +4,8 @@ namespace Models.Abilities
 {
     public class Ability
     {
+        private const int TwentySeconds = 20000;
+
         private Time time;
 
         public string Name { get; set; } = "Undefined";
@@ -30,7 +32,11 @@ namespace Models.Abilities
 
         public static Ability Charge(Time time)
         {
-            Ability ability = new(time) { Name = nameof(Charge) };
+            Ability ability = new(time)
+            {
+                Name = nameof(Charge),
+                CooldownInMillis = TwentySeconds,
+            };
 
             Root root = new Root();
             root.AffectedBy(time);
