@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cklyov5lu5kpx"]
+[gd_scene load_steps=6 format=3 uid="uid://cklyov5lu5kpx"]
 
 [ext_resource type="PackedScene" uid="uid://cx10o7vl1ury5" path="res://Prefabs/Skill.tscn" id="1_5v14t"]
+[ext_resource type="Script" path="res://Code/Views/DependencyInjection.cs" id="1_iddhj"]
 [ext_resource type="PackedScene" uid="uid://c6g4js4fo0eur" path="res://Prefabs/YourCharacterFrame.tscn" id="1_u3q8h"]
 [ext_resource type="Script" path="res://Code/Views/ActionBar.cs" id="2_hvffd"]
 [ext_resource type="Texture2D" uid="uid://jo6r2vp1kwjx" path="res://Assets/Charge.jpg" id="2_jcvb8"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_iddhj")
 
 [node name="YourCharacterFrame" parent="." instance=ExtResource("1_u3q8h")]
 layout_mode = 0

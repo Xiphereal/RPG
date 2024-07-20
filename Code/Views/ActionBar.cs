@@ -5,27 +5,19 @@ using System.Linq;
 
 public partial class ActionBar : Control
 {
-    private readonly Warrior warrior;
-
-    public ActionBar()
-    {
-        warrior = Character.Warrior;
-
-        // lvl 2, with Charge.
-        warrior.LevelUp();
-    }
+    public Warrior Warrior { private get; set; }
 
     public void UseSlam()
     {
-        warrior.Abilities
+        Warrior.Abilities
             .First(x => x.Name == nameof(Ability.Slam))
-            .Use(by: warrior, on: new Target(health: 999999));
+            .Use(by: Warrior, on: new Target(health: 999999));
     }
 
     public void UseCharge()
     {
-        warrior.Abilities
+        Warrior.Abilities
             .First(x => x.Name == nameof(Ability.Charge))
-            .Use(by: warrior, on: new Target(health: 999999));
+            .Use(by: Warrior, on: new Target(health: 999999));
     }
 }

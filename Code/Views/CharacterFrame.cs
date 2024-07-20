@@ -3,17 +3,12 @@ using Models.Characters;
 
 public partial class CharacterFrame : Control
 {
-    private readonly Warrior character;
-
-    public CharacterFrame()
-    {
-        character = Character.Warrior;
-    }
+    public Warrior Warrior { private get; set; }
 
     public override void _Process(double delta)
     {
-        GetNode<Label>("%Level").Text = character.Level.ToString();
-        GetNode<ProgressBar>("%Health").Value = character.Health;
-        GetNode<ProgressBar>("%Resource").Value = character.Rage.Value;
+        GetNode<Label>("%Level").Text = Warrior.Level.ToString();
+        GetNode<ProgressBar>("%Health").Value = Warrior.Health;
+        GetNode<ProgressBar>("%Resource").Value = Warrior.Rage.Value;
     }
 }
