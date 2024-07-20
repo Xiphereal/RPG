@@ -5,10 +5,10 @@
 [node name="Skill1" type="PanelContainer"]
 custom_minimum_size = Vector2(40, 40)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Button" type="Button" parent="."]
 layout_mode = 2
-texture = ExtResource("1_lolj3")
-expand_mode = 1
+icon = ExtResource("1_lolj3")
+expand_icon = true
 
 [node name="Binding" type="Label" parent="."]
 layout_mode = 2

@@ -74,8 +74,8 @@ layout_mode = 2
 [node name="Skill2" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill2" index="0"]
-texture = ExtResource("2_jcvb8")
+[node name="Button" parent="ActionBar/HBoxContainer/Skill2" index="0"]
+icon = ExtResource("2_jcvb8")
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill2" index="1"]
 text = "2"
@@ -83,8 +83,8 @@ text = "2"
 [node name="Skill3" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill3" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill3" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill3" index="1"]
 text = "3"
@@ -92,8 +92,8 @@ text = "3"
 [node name="Skill4" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill4" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill4" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill4" index="1"]
 text = "4"
@@ -101,8 +101,8 @@ text = "4"
 [node name="Skill5" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill5" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill5" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill5" index="1"]
 text = "5"
@@ -110,8 +110,8 @@ text = "5"
 [node name="Skill6" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill6" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill6" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill6" index="1"]
 text = "6"
@@ -119,8 +119,8 @@ text = "6"
 [node name="Skill7" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill7" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill7" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill7" index="1"]
 text = "7"
@@ -128,8 +128,8 @@ text = "7"
 [node name="Skill8" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill8" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill8" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill8" index="1"]
 text = "8"
@@ -137,8 +137,8 @@ text = "8"
 [node name="Skill9" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill9" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill9" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill9" index="1"]
 text = "9"
@@ -146,8 +146,8 @@ text = "9"
 [node name="Skill0" parent="ActionBar/HBoxContainer" instance=ExtResource("1_5v14t")]
 layout_mode = 2
 
-[node name="TextureRect" parent="ActionBar/HBoxContainer/Skill0" index="0"]
-texture = null
+[node name="Button" parent="ActionBar/HBoxContainer/Skill0" index="0"]
+icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill0" index="1"]
 text = "0"
