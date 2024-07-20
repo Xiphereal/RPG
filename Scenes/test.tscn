@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cklyov5lu5kpx"]
+[gd_scene load_steps=5 format=3 uid="uid://cklyov5lu5kpx"]
 
 [ext_resource type="PackedScene" uid="uid://cx10o7vl1ury5" path="res://Prefabs/Skill.tscn" id="1_5v14t"]
 [ext_resource type="PackedScene" uid="uid://c6g4js4fo0eur" path="res://Prefabs/YourCharacterFrame.tscn" id="1_u3q8h"]
+[ext_resource type="Script" path="res://Code/Views/ActionBar.cs" id="2_hvffd"]
 [ext_resource type="Texture2D" uid="uid://jo6r2vp1kwjx" path="res://Assets/Charge.jpg" id="2_jcvb8"]
 
 [node name="Control" type="Control"]
@@ -31,6 +32,7 @@ offset_right = -213.0
 offset_bottom = -22.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("2_hvffd")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ActionBar"]
 layout_mode = 2
@@ -118,6 +120,9 @@ icon = null
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill0" index="1"]
 text = "0"
+
+[connection signal="pressed" from="ActionBar/HBoxContainer/Skill1/Button" to="ActionBar" method="UseSlam"]
+[connection signal="pressed" from="ActionBar/HBoxContainer/Skill2/Button" to="ActionBar" method="UseCharge"]
 
 [editable path="ActionBar/HBoxContainer/Skill1"]
 [editable path="ActionBar/HBoxContainer/Skill2"]
