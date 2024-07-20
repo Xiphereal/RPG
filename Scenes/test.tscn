@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cklyov5lu5kpx"]
+[gd_scene load_steps=6 format=3 uid="uid://cklyov5lu5kpx"]
 
+[ext_resource type="Script" path="res://Code/Views/CharacterFrame.cs" id="1_2a3ix"]
 [ext_resource type="PackedScene" uid="uid://cx10o7vl1ury5" path="res://Prefabs/Skill.tscn" id="1_5v14t"]
 [ext_resource type="Texture2D" uid="uid://jo6r2vp1kwjx" path="res://Assets/Charge.jpg" id="2_jcvb8"]
 
@@ -23,11 +24,13 @@ offset_left = 185.0
 offset_top = 208.0
 offset_right = 446.0
 offset_bottom = 284.0
+script = ExtResource("1_2a3ix")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="YourCharacterFrame"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="YourCharacterFrame/HBoxContainer"]
+[node name="Level" type="Label" parent="YourCharacterFrame/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "8"
@@ -43,11 +46,13 @@ text = "<CharacterName>"
 horizontal_alignment = 1
 
 [node name="Health" type="ProgressBar" parent="YourCharacterFrame/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_k1o2h")
 value = 100.0
 
 [node name="Resource" type="ProgressBar" parent="YourCharacterFrame/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_8wjyl")
 value = 50.0
