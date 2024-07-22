@@ -6,7 +6,6 @@ namespace Models.Characters
     {
         protected Resource resource;
 
-        public int Level { get; private set; } = 1;
         public int Experience { get; private set; }
         public int ExperienceRequiredForLevelUp { get; private set; } = 100;
 

@@ -16,6 +16,10 @@ public partial class DependencyInjection : Control
 
         GetNode<CharacterFrame>("YourCharacterFrame").Warrior = warrior;
         GetNode<ActionBar>("ActionBar").Warrior = warrior;
+
+        var target = new Target(100);
+        GetNode<ActionBar>("ActionBar").Target = target;
+        GetNode<TargetFrame>("TargetFrame").Target = target;
     }
 
     public void TimeTicked()

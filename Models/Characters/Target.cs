@@ -8,6 +8,8 @@ namespace Models.Characters
         public bool IsRooted { get; private set; }
         public List<Debuff> Debuffs { get; set; } = [];
 
+        public int Level { get; protected set; } = 1;
+
         public Target(int health)
         {
             Health = health;

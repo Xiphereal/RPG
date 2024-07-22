@@ -1,10 +1,17 @@
-[gd_scene load_steps=10 format=3 uid="uid://cklyov5lu5kpx"]
+[gd_scene load_steps=13 format=3 uid="uid://cklyov5lu5kpx"]
 
 [ext_resource type="PackedScene" uid="uid://cx10o7vl1ury5" path="res://Prefabs/Skill.tscn" id="1_5v14t"]
 [ext_resource type="Script" path="res://Code/Views/DependencyInjection.cs" id="1_iddhj"]
 [ext_resource type="PackedScene" uid="uid://c6g4js4fo0eur" path="res://Prefabs/YourCharacterFrame.tscn" id="1_u3q8h"]
 [ext_resource type="Script" path="res://Code/Views/ActionBar.cs" id="2_hvffd"]
 [ext_resource type="Texture2D" uid="uid://jo6r2vp1kwjx" path="res://Assets/Charge.jpg" id="2_jcvb8"]
+[ext_resource type="Script" path="res://Code/Views/TargetFrame.cs" id="3_uoobp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1o2h"]
+bg_color = Color(9.62615e-07, 0.563406, 0.218802, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wjyl"]
+bg_color = Color(0.712663, 0, 0.00953778, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_jcov6"]
 device = -1
@@ -37,6 +44,47 @@ offset_left = 168.0
 offset_top = 227.0
 offset_right = 429.0
 offset_bottom = 312.0
+
+[node name="TargetFrame" type="PanelContainer" parent="."]
+layout_mode = 2
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -434.0
+offset_top = 227.0
+offset_right = -173.0
+offset_bottom = 312.0
+script = ExtResource("3_uoobp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TargetFrame"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TargetFrame/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="TargetFrame/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "<TargetName>"
+horizontal_alignment = 1
+
+[node name="Health" type="ProgressBar" parent="TargetFrame/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_k1o2h")
+value = 100.0
+
+[node name="Resource" type="ProgressBar" parent="TargetFrame/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_8wjyl")
+value = 50.0
+
+[node name="Level" type="Label" parent="TargetFrame/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "8"
+horizontal_alignment = 1
 
 [node name="ActionBar" type="PanelContainer" parent="."]
 layout_mode = 1

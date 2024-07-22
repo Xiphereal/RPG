@@ -8,6 +8,7 @@ using System.Linq;
 public partial class ActionBar : Control
 {
     public Warrior Warrior { private get; set; }
+    public Target Target { private get; set; }
 
     public override void _Process(double delta)
     {
@@ -16,6 +17,7 @@ public partial class ActionBar : Control
     }
 
     private Array<Node> AllButtons => GetChild(0).GetChildren();
+
 
     private void DisplayAbilitiesCDs()
     {
@@ -61,13 +63,13 @@ public partial class ActionBar : Control
     {
         Warrior.Abilities
             .First(x => x.Name == nameof(Ability.Slam))
-            .Use(by: Warrior, on: new Target(health: 999999));
+            .Use(by: Warrior, on: Target);
     }
 
     public void UseCharge()
     {
         Warrior.Abilities
             .First(x => x.Name == nameof(Ability.Charge))
-            .Use(by: Warrior, on: new Target(health: 999999));
+            .Use(by: Warrior, on: Target);
     }
 }
