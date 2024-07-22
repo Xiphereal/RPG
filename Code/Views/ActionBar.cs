@@ -12,7 +12,7 @@ public partial class ActionBar : Control
     public override void _Process(double delta)
     {
         DisplayAbilitiesCDs();
-        DisableAbilitiesOnCD();
+        DisableUnavailableAbilities();
     }
 
     private Array<Node> AllButtons => GetChild(0).GetChildren();
@@ -33,12 +33,12 @@ public partial class ActionBar : Control
         });
     }
 
-    private void DisableAbilitiesOnCD()
+    private void DisableUnavailableAbilities()
     {
         ForEachAbility((ability, index) =>
         {
             AllButtons[index].GetNode<Button>("Button").Disabled =
-                !ability.Available();
+                !Warrior.HasAvailable(ability.Name);
         });
     }
 
