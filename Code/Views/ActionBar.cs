@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using Models.Abilities;
 using Models.Characters;
 using System;
@@ -11,24 +12,43 @@ public partial class ActionBar : Control
     public override void _Process(double delta)
     {
         DisplayAbilitiesCDs();
+        DisableAbilitiesOnCD();
     }
+
+    private Array<Node> AllButtons => GetNode("HBoxContainer").GetChildren();
 
     private void DisplayAbilitiesCDs()
     {
-        var buttons = GetNode("HBoxContainer").GetChildren();
-
-        for (int i = 0; i < Warrior.Abilities.Count; i++)
+        ForEachAbility((ability, index) =>
         {
-            var ability = Warrior.Abilities.ElementAt(i);
-
-            buttons[i].GetNode<Control>("CD").Visible = ability.RemainingCooldownInMillis > 0;
+            AllButtons[index].GetNode<Control>("CD").Visible =
+                ability.RemainingCooldownInMillis > 0;
 
             double remainingCooldownInSeconds =
                 TimeSpan
                     .FromMilliseconds(ability.RemainingCooldownInMillis)
                     .TotalSeconds;
-            buttons[i].GetNode<Control>("CD").GetChild<Label>(0).Text =
+            AllButtons[index].GetNode<Control>("CD").GetChild<Label>(0).Text =
                 ToInt(remainingCooldownInSeconds).ToString();
+        });
+    }
+
+    private void DisableAbilitiesOnCD()
+    {
+        ForEachAbility((ability, index) =>
+        {
+            AllButtons[index].GetNode<Button>("Button").Disabled =
+                !ability.Available();
+        });
+    }
+
+    private void ForEachAbility(Action<Ability, int> action)
+    {
+        for (int i = 0; i < Warrior.Abilities.Count; i++)
+        {
+            var ability = Warrior.Abilities.ElementAt(i);
+
+            action.Invoke(ability, i);
         }
     }
 
