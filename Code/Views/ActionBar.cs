@@ -22,9 +22,19 @@ public partial class ActionBar : Control
             var ability = Warrior.Abilities.ElementAt(i);
 
             buttons[i].GetNode<Control>("CD").Visible = ability.RemainingCooldownInMillis > 0;
+
+            double remainingCooldownInSeconds =
+                TimeSpan
+                    .FromMilliseconds(ability.RemainingCooldownInMillis)
+                    .TotalSeconds;
             buttons[i].GetNode<Control>("CD").GetChild<Label>(0).Text =
-                TimeSpan.FromMilliseconds(ability.RemainingCooldownInMillis).TotalSeconds.ToString();
+                ToInt(remainingCooldownInSeconds).ToString();
         }
+    }
+
+    private static int ToInt(double value)
+    {
+        return (int)Math.Round(value);
     }
 
     public void UseSlam()

@@ -20,6 +20,7 @@ public partial class DependencyInjection : Control
 
     public void TimeTicked()
     {
-        time.Pass();
+        // This expects the Timer to tick every second.
+        time.Pass(howMuch: 1000);
     }
 }
