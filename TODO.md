@@ -1,4 +1,2 @@
-- feat: display abilities CD
 - feat: disable button on CD
-- feat: set keybinds
 - refactor: make each button responsible for knowing which ability should invoke

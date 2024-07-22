@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cx10o7vl1ury5"]
+[gd_scene load_steps=3 format=3 uid="uid://cx10o7vl1ury5"]
 
 [ext_resource type="Texture2D" uid="uid://blixkb2ckthbj" path="res://Assets/Slam.jpg" id="1_lolj3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0n7v"]
+font_size = 28
 
 [node name="Skill1" type="PanelContainer"]
 custom_minimum_size = Vector2(40, 40)
@@ -16,3 +19,16 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "1"
 horizontal_alignment = 2
+
+[node name="CD" type="Panel" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="RemainingInSeconds" type="Label" parent="CD"]
+layout_mode = 2
+offset_right = 40.0
+offset_bottom = 39.0
+text = "23"
+label_settings = SubResource("LabelSettings_a0n7v")
+horizontal_alignment = 1
+vertical_alignment = 1
