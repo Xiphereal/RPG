@@ -15,7 +15,7 @@ public partial class ActionBar : Control
         DisableAbilitiesOnCD();
     }
 
-    private Array<Node> AllButtons => GetNode("HBoxContainer").GetChildren();
+    private Array<Node> AllButtons => GetChild(0).GetChildren();
 
     private void DisplayAbilitiesCDs()
     {
