@@ -143,8 +143,12 @@ icon = null
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill0" index="1"]
 text = "0"
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="ActionBar/HBoxContainer/Skill1/Button" to="ActionBar" method="UseSlam"]
 [connection signal="pressed" from="ActionBar/HBoxContainer/Skill2/Button" to="ActionBar" method="UseCharge"]
+[connection signal="timeout" from="Timer" to="." method="TimeTicked"]
 
 [editable path="ActionBar/HBoxContainer/Skill1"]
 [editable path="ActionBar/HBoxContainer/Skill2"]
