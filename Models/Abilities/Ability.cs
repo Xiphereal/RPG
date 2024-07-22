@@ -15,8 +15,6 @@ namespace Models.Abilities
         private int remainingCooldownInMillis;
         private readonly HashSet<IEffect> effects = [];
 
-        private int resourceConsumption;
-
         public static Ability Slam(Time time)
         {
             Ability ability = new(time) { Name = nameof(Slam) };
@@ -25,7 +23,7 @@ namespace Models.Abilities
                 {
                     Coefficient = 0.35
                 })
-                .Cost(howMuch: 20);
+                .Consuming(howMuch: 20);
 
             return ability;
         }
@@ -58,6 +56,8 @@ namespace Models.Abilities
             set => remainingCooldownInMillis = Math.Clamp(value, min: 0, max: CooldownInMillis);
         }
 
+        public int ResourceConsumption { get; private set; }
+
         public Ability(Time time)
         {
             AffectedBy(time);
@@ -75,7 +75,7 @@ namespace Models.Abilities
 
             effects.Apply(by, on);
 
-            by.ConsumeResource(resourceConsumption);
+            by.ConsumeResource(ResourceConsumption);
 
             PutOnCooldown();
         }
@@ -98,9 +98,9 @@ namespace Models.Abilities
             return this;
         }
 
-        public Ability Cost(int howMuch)
+        public Ability Consuming(int howMuch)
         {
-            resourceConsumption = howMuch;
+            ResourceConsumption = howMuch;
 
             return this;
         }

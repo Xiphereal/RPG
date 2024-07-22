@@ -51,5 +51,13 @@ namespace Models.Characters
         {
             this.resource.Gain(howMuch);
         }
+
+        public bool HasAvailable(string abilityName)
+        {
+            Ability ability = Abilities.Single(x => x.Name == abilityName);
+
+            return ability.ResourceConsumption <= resource.Value
+                && ability.Available();
+        }
     }
 }

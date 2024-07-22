@@ -12,7 +12,7 @@ namespace Models.Tests.Abilities
             var time = new Time();
             var sut = Ability
                 .SubdueBy(time)
-                .Cost(20);
+                .Consuming(20);
             var caster = Character.Warrior;
             caster.GenerateRage(100);
 

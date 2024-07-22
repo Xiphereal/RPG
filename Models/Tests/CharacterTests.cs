@@ -37,6 +37,46 @@ namespace Models.Tests
         }
 
         [Test]
+        public void AbilitiesAreNotAvailable_WhenNotEnoughResources()
+        {
+            var time = new Time();
+            var caster = Character.Warrior;
+
+            caster.HasAvailable(nameof(Ability.Slam)).Should().BeFalse();
+        }
+
+        [Test]
+        public void AbilitiesAreAvailable_WhenEnoughResources()
+        {
+            var time = new Time();
+            var caster = Character.Warrior;
+            caster.GenerateRage(Ability.Slam(time).ResourceConsumption);
+
+            caster.HasAvailable(nameof(Ability.Slam)).Should().BeTrue();
+        }
+
+        [Test]
+        public void AbilitiesAreNotAvailable_WhenInCooldown()
+        {
+            var time = new Time();
+            var caster = WarriorWithAbilityWithCD();
+
+            Ability ability = caster.Abilities.First(x => x.CooldownInMillis > 0);
+            ability
+                .Use(by: caster, on: new Target(9999));
+
+            caster.HasAvailable(ability.Name).Should().BeFalse();
+        }
+
+        private static Warrior WarriorWithAbilityWithCD()
+        {
+            Warrior warrior = Character.Warrior;
+            warrior.LevelUp();
+
+            return warrior;
+        }
+
+        [Test]
         public void TimeInfluenceIsPropagatedFromTheCharacter_DownToItsAbilities()
         {
             // Arrange.
