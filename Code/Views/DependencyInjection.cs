@@ -8,6 +8,7 @@ public partial class DependencyInjection : Control
     public override void _Ready()
     {
         Warrior warrior = Character.Warrior;
+        warrior.Name = "You";
         // lvl 2, with Charge.
         warrior.LevelUp();
 

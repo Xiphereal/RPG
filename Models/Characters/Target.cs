@@ -4,6 +4,7 @@ namespace Models.Characters
 {
     public class Target
     {
+        public string Name { get; set; } = "Dummy";
         public int Health { get; private set; }
         public bool IsRooted { get; private set; }
         public List<Debuff> Debuffs { get; set; } = [];
