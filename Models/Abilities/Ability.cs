@@ -60,8 +60,7 @@ namespace Models.Abilities
 
         public Ability(Time time)
         {
-            this.time = time;
-            this.time.Tick += (_, _) => RemainingCooldownInMillis--;
+            AffectedBy(time);
         }
 
         public bool Available()
@@ -104,6 +103,15 @@ namespace Models.Abilities
             resourceConsumption = howMuch;
 
             return this;
+        }
+
+        public void AffectedBy(Time time)
+        {
+            this.time = time;
+            this.time.Tick += (_, _) => RemainingCooldownInMillis--;
+
+            foreach (var effect in effects)
+                effect.AffectedBy(time);
         }
     }
 }

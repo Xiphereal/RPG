@@ -7,6 +7,7 @@ namespace Models.Characters
         public int Health { get; private set; }
         public bool IsRooted { get; private set; }
         public List<Debuff> Debuffs { get; set; } = [];
+
         public Target(int health)
         {
             Health = health;
@@ -31,7 +32,7 @@ namespace Models.Characters
             Debuffs.Add(debuff);
         }
 
-        public void AffectedBy(Time time)
+        public virtual void AffectedBy(Time time)
         {
             time.Tick += (_, _) =>
             {

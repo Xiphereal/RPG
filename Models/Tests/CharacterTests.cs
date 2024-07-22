@@ -35,5 +35,30 @@ namespace Models.Tests
                 .Abilities
                 .Should().ContainEquivalentOf(Ability.Charge(time));
         }
+
+        [Test]
+        public void TimeInfluenceIsPropagatedFromTheCharacter_DownToItsAbilities()
+        {
+            // Arrange.
+            var time = new Time();
+
+            Character warriorWithCharge = Character.Warrior;
+            warriorWithCharge.LevelUp();
+
+            // Act.
+            warriorWithCharge.AffectedBy(time);
+
+            // Assert.
+            Ability charge = warriorWithCharge
+                .Abilities
+                .First(x => x.Name == nameof(Ability.Charge));
+            charge.Use(by: warriorWithCharge, on: new Target(99999));
+
+            const int elapsedTime = 1000;
+            time.Pass(elapsedTime);
+
+            charge.RemainingCooldownInMillis.Should().Be(charge.CooldownInMillis - elapsedTime);
+        }
     }
+
 }

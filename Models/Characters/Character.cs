@@ -26,6 +26,14 @@ namespace Models.Characters
             ExperienceRequiredForLevelUp += ExperienceRequiredForLevelUp;
         }
 
+        public override void AffectedBy(Time time)
+        {
+            base.AffectedBy(time);
+
+            foreach (var item in Abilities)
+                item.AffectedBy(time);
+        }
+
         public void GainExp(int gain)
         {
             Experience += gain;
