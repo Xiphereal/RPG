@@ -19,6 +19,7 @@ public partial class DependencyInjection : Control
         GetNode<ActionBar>("ActionBar").Warrior = warrior;
 
         var target = new Target(100);
+        target.AffectedBy(time);
         GetNode<ActionBar>("ActionBar").Target = target;
         GetNode<TargetFrame>("TargetFrame").Target = target;
     }
