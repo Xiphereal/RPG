@@ -18,7 +18,7 @@ namespace Models.Characters
             Health = health;
         }
 
-        public void ReceiveDamage(int value) => Health -= value;
+        public void Take(int damage) => Health -= damage;
 
         public void Heal(int value) => Health += value;
 

@@ -11,7 +11,7 @@ namespace Models.Tests.Abilities
         {
             var damage = new Damage()
             {
-                Value = 200
+                HowMuch = 200
             };
             Ability ability = Ability.SubdueBy(new Time()).With(damage);
             var target = new Target(health: 200);

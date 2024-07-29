@@ -13,7 +13,7 @@ namespace Models.Abilities
 
         public void Apply(Target on, Character? by = null)
         {
-            on.ReceiveDamage(ToInt(by!.AttackPower * Coefficient));
+            on.Take(ToInt(by!.AttackPower * Coefficient));
         }
 
         private int ToInt(double value)
