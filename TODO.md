@@ -1,2 +1,1 @@
-- feat: disable button on CD
 - refactor: make each button responsible for knowing which ability should invoke
