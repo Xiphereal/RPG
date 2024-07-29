@@ -1,1 +1,16 @@
 - refactor: make each button responsible for knowing which ability should invoke
+- feat: autoattacks
+- feat: critical strikes/dodge/miss/hit
+- feat: casted abilities
+- feat: channeled abilities
+- feat: warrior buffs (shouts?)
+- feat: inventory
+- feat: choose/change target
+- feat: aggro
+- feat: abilities range
+- feat: killing mobs report exp.
+- feat: floating dmg numbers
+- feat: display buffs/debuffs
+- feat: stats are affected by equipment
+- feat: questing
+- feat: sounds
