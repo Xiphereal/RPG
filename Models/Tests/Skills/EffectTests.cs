@@ -84,7 +84,7 @@ namespace Models.Tests.Abilities
             root.AffectedBy(time);
             time.Pass(root.RemainingDurationInMilis);
 
-            root.Apply(on: new Target(9999));
+            root.Apply(on: Target.Invencible());
 
             root.RemainingDurationInMilis.Should().Be(initial);
         }

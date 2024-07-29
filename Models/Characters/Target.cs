@@ -4,6 +4,8 @@ namespace Models.Characters
 {
     public class Target
     {
+        public static Target Invencible() => new(99999);
+
         public string Name { get; set; } = "Dummy";
         public int Health { get; private set; }
         public bool IsRooted { get; private set; }

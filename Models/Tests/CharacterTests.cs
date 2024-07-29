@@ -63,7 +63,7 @@ namespace Models.Tests
 
             Ability ability = caster.Abilities.First(x => x.CooldownInMillis > 0);
             ability
-                .Use(by: caster, on: new Target(9999));
+                .Use(by: caster, on: Target.Invencible());
 
             caster.HasAvailable(ability.Name).Should().BeFalse();
         }
@@ -92,7 +92,7 @@ namespace Models.Tests
             Ability charge = warriorWithCharge
                 .Abilities
                 .First(x => x.Name == nameof(Ability.Charge));
-            charge.Use(by: warriorWithCharge, on: new Target(99999));
+            charge.Use(by: warriorWithCharge, on: Target.Invencible());
 
             const int elapsedTime = 1000;
             time.Pass(elapsedTime);
