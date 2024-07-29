@@ -52,12 +52,15 @@ public partial class TargetFrame : Control
             TimeSpan
                 .FromMilliseconds(debuff.RemainingDurationInMilis)
                 .TotalSeconds;
-        textureRect.AddChild(new Label()
+        var cooldown = new Label()
         {
             Text = ToInt(remainingCooldownInSeconds).ToString(),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
-        });
+        };
+        cooldown.SetAnchorsPreset(LayoutPreset.FullRect);
+
+        textureRect.AddChild(cooldown);
 
         return textureRect;
     }
