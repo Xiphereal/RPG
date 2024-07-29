@@ -13,6 +13,12 @@ namespace Models.Abilities
         public int CooldownInMillis { get; set; }
 
         private int remainingCooldownInMillis;
+        public int RemainingCooldownInMillis
+        {
+            get => remainingCooldownInMillis;
+            set => remainingCooldownInMillis = Math.Clamp(value, min: 0, max: CooldownInMillis);
+        }
+
         private readonly HashSet<IEffect> effects = [];
 
         public static Ability Slam(Time time)
@@ -48,12 +54,6 @@ namespace Models.Abilities
                 .With(new ResourceGeneration() { Value = 20 });
 
             return ability;
-        }
-
-        public int RemainingCooldownInMillis
-        {
-            get => remainingCooldownInMillis;
-            set => remainingCooldownInMillis = Math.Clamp(value, min: 0, max: CooldownInMillis);
         }
 
         public int ResourceConsumption { get; private set; }
