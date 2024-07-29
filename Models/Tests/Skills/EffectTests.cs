@@ -42,10 +42,7 @@ namespace Models.Tests.Abilities
             var time = new Time();
             var character = Character.Warrior;
             character.AffectedBy(time);
-            var root = new Root()
-            {
-                RemainingDurationInMilis = 1000
-            };
+            var root = new Root(durationInMilis: 1000);
             root.AffectedBy(time);
 
             character.Apply(root);
@@ -58,11 +55,8 @@ namespace Models.Tests.Abilities
         [Test]
         public void Debuffs_ExpireOverTime()
         {
-            var root = new Root()
-            {
-                RemainingDurationInMilis = 1000
-            };
-            Time time = new Time();
+            var root = new Root(durationInMilis: 1000);
+            var time = new Time();
             root.AffectedBy(time);
 
             time.Pass(root.RemainingDurationInMilis);
@@ -75,11 +69,7 @@ namespace Models.Tests.Abilities
         public void DebuffDurationOnApplication_IsItsFullDuration()
         {
             const int initial = 1000;
-            var root = new Root()
-            {
-                RemainingDurationInMilis = initial,
-                DurationInMilis = initial,
-            };
+            var root = new Root(durationInMilis: initial);
             var time = new Time();
             root.AffectedBy(time);
             time.Pass(root.RemainingDurationInMilis);
@@ -93,10 +83,7 @@ namespace Models.Tests.Abilities
         public void CharacterDebuffs_AreRemovedWhenExpired_ThusTheirEffectVanished()
         {
             // Arrange
-            var root = new Root()
-            {
-                RemainingDurationInMilis = 1000
-            };
+            var root = new Root(durationInMilis: 1000);
             Time time = new Time();
             root.AffectedBy(time);
 

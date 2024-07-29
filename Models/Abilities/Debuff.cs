@@ -5,8 +5,14 @@ namespace Models.Abilities
     public abstract class Debuff : IEffect
     {
         public bool IsExpired { get; set; }
-        public int DurationInMilis { get; set; }
-        public int RemainingDurationInMilis { get; set; }
+        public int DurationInMilis { get; init; }
+        public int RemainingDurationInMilis { get; private set; }
+
+        protected Debuff(int durationInMilis)
+        {
+            DurationInMilis = durationInMilis;
+            RemainingDurationInMilis = DurationInMilis;
+        }
 
         public void AffectedBy(Time time)
         {
