@@ -50,7 +50,7 @@ public partial class TargetFrame : Control
 
         double remainingCooldownInSeconds =
             TimeSpan
-                .FromMilliseconds(debuff.DurationInMilis)
+                .FromMilliseconds(debuff.RemainingDurationInMilis)
                 .TotalSeconds;
         textureRect.AddChild(new Label()
         {

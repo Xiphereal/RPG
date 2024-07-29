@@ -42,7 +42,7 @@ namespace Models.Abilities
                 CooldownInMillis = TwentySeconds,
             };
 
-            Root root = new Root();
+            var root = new Root();
             root.AffectedBy(time);
 
             ability

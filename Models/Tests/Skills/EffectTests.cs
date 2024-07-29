@@ -44,7 +44,7 @@ namespace Models.Tests.Abilities
             character.AffectedBy(time);
             var root = new Root()
             {
-                DurationInMilis = 1000
+                RemainingDurationInMilis = 1000
             };
             root.AffectedBy(time);
 
@@ -60,14 +60,33 @@ namespace Models.Tests.Abilities
         {
             var root = new Root()
             {
-                DurationInMilis = 1000
+                RemainingDurationInMilis = 1000
             };
             Time time = new Time();
             root.AffectedBy(time);
 
-            time.Pass(root.DurationInMilis);
+            time.Pass(root.RemainingDurationInMilis);
 
             root.IsExpired.Should().BeTrue();
+        }
+
+        [Test]
+        [Category("Regression")]
+        public void DebuffDurationOnApplication_IsItsFullDuration()
+        {
+            const int initial = 1000;
+            var root = new Root()
+            {
+                RemainingDurationInMilis = initial,
+                DurationInMilis = initial,
+            };
+            var time = new Time();
+            root.AffectedBy(time);
+            time.Pass(root.RemainingDurationInMilis);
+
+            root.Apply(on: new Target(9999));
+
+            root.RemainingDurationInMilis.Should().Be(initial);
         }
 
         [Test]
@@ -76,7 +95,7 @@ namespace Models.Tests.Abilities
             // Arrange
             var root = new Root()
             {
-                DurationInMilis = 1000
+                RemainingDurationInMilis = 1000
             };
             Time time = new Time();
             root.AffectedBy(time);
@@ -89,7 +108,7 @@ namespace Models.Tests.Abilities
             character.IsRooted.Should().BeTrue();
 
             // Act
-            time.Pass(root.DurationInMilis);
+            time.Pass(root.RemainingDurationInMilis);
 
             // Assert
             character.Debuffs.Should().BeEmpty();
