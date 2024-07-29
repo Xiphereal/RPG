@@ -4,8 +4,8 @@ namespace Models.Abilities
 {
     public class Ability
     {
+        private const int OneSecond = 1000;
         private const int TwentySeconds = 20000;
-
         private Time time;
 
         public string Name { get; set; } = "Undefined";
@@ -42,8 +42,7 @@ namespace Models.Abilities
                 CooldownInMillis = TwentySeconds,
             };
 
-            var root = new Root(durationInMilis: 0);
-            root.AffectedBy(time);
+            var root = new Root(durationInMilis: OneSecond);
 
             ability
                 .With(new AttackPowerCoefficientBasedDamage()
