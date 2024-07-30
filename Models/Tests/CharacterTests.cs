@@ -90,12 +90,14 @@ namespace Models.Tests
         }
 
         [Test]
-        public void AbilitiesCanBeQueried_TakingWhitespacesIntoAccount()
+        public void AbilitiesCanBeQueried_IgnoringWhitespaces()
         {
             var warrior = Character.Warrior;
             warrior.LevelUpTo(10);
 
             warrior.Ability(nameof(Ability.BattleShout)).Name
+                .Should().Be("Battle Shout");
+            warrior.Ability("Battle Shout").Name
                 .Should().Be("Battle Shout");
         }
 
