@@ -1,4 +1,5 @@
 using Godot;
+using Models;
 using Models.Abilities;
 using Models.Characters;
 using System;
@@ -54,7 +55,7 @@ public partial class TargetFrame : Control
                 .TotalSeconds;
         var cooldown = new Label()
         {
-            Text = ToInt(remainingCooldownInSeconds).ToString(),
+            Text = remainingCooldownInSeconds.ToInt().ToString(),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
         };
@@ -68,10 +69,5 @@ public partial class TargetFrame : Control
     private BuffsDebuffs Buffs()
     {
         return GetNode<BuffsDebuffs>("%Buffs_Debuffs");
-    }
-
-    private static int ToInt(double value)
-    {
-        return (int)Math.Round(value);
     }
 }

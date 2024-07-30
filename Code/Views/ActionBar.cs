@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using Models;
 using Models.Abilities;
 using Models.Characters;
 using System;
@@ -31,7 +32,7 @@ public partial class ActionBar : Control
                     .FromMilliseconds(ability.RemainingCooldownInMillis)
                     .TotalSeconds;
             AllButtons[index].GetNode<Control>("CD").GetChild<Label>(0).Text =
-                ToInt(remainingCooldownInSeconds).ToString();
+                remainingCooldownInSeconds.ToInt().ToString();
         });
     }
 
@@ -52,11 +53,6 @@ public partial class ActionBar : Control
 
             action.Invoke(ability, i);
         }
-    }
-
-    private static int ToInt(double value)
-    {
-        return (int)Math.Round(value);
     }
 
     public void UseSlam()

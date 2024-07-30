@@ -19,7 +19,7 @@ namespace Models.Tests.Abilities
             Ability.Slam().Use(by: caster, on: target);
 
             int damage = Character.Warrior.Health - target.Health;
-            damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.35));
+            damage.Should().Be((Character.Warrior.AttackPower * 0.35).ToInt());
         }
 
         [Test]
@@ -48,7 +48,7 @@ namespace Models.Tests.Abilities
 
             // Assert
             int damage = Character.Warrior.Health - target.Health;
-            damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.21));
+            damage.Should().Be((Character.Warrior.AttackPower * 0.21).ToInt());
 
             target.PassTime();
             target.IsRooted.Should().BeTrue();
@@ -87,12 +87,7 @@ namespace Models.Tests.Abilities
         {
             Ability.Charge()
                 .CooldownInMillis
-                .Should().Be(ToInt(20.Seconds().TotalMilliseconds));
-        }
-
-        private int ToInt(double value)
-        {
-            return (int)Math.Round(value);
+                .Should().Be(20.Seconds().TotalMilliseconds.ToInt());
         }
     }
 }

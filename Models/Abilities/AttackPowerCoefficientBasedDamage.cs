@@ -13,12 +13,7 @@ namespace Models.Abilities
 
         public void Apply(Target on, Character? by = null)
         {
-            on.Take(ToInt(by!.AttackPower * Coefficient));
-        }
-
-        private int ToInt(double value)
-        {
-            return (int)Math.Round(value);
+            on.Take((by!.AttackPower * Coefficient).ToInt());
         }
 
         public void Expire(Target on)
