@@ -37,8 +37,7 @@ namespace Models.Tests
         public void WarriorLearnsBattleShoutAtLevel10()
         {
             Character warrior = Character.Warrior;
-            for (int i = 1; i < 10; i++)
-                warrior.LevelUp();
+            warrior.LevelUpTo(10);
 
             warrior
                 .Abilities
