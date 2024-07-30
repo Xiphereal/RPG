@@ -11,9 +11,9 @@ namespace Models.Abilities
         {
         }
 
-        public void Apply(Target on, Character? by = null)
+        public void Apply(Target on, Character by)
         {
-            on.Take((by!.AttackPower * Coefficient).ToInt());
+            on.Take((by.AttackPower * Coefficient).ToInt());
         }
 
         public void Expire(Target on)

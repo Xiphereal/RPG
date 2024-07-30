@@ -12,7 +12,7 @@ namespace Models.Abilities
             throw new NotImplementedException();
         }
 
-        public void Apply(Target on, Character? by = null)
+        public void Apply(Target on, Character by)
         {
             on.Heal(Value);
         }

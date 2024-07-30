@@ -13,7 +13,7 @@ namespace Models.Abilities
 
         public bool IsExpired { get; set; }
 
-        public void Apply(Target on, Character? by = null)
+        public void Apply(Target on, Character by)
         {
             by.AttackPower += (by.AttackPower * percentage).ToInt();
         }
