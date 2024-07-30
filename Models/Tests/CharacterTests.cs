@@ -71,6 +71,14 @@ namespace Models.Tests
         }
 
         [Test]
+        public void AbilitiesCanBeQueried()
+        {
+            var warrior = Character.Warrior;
+
+            warrior.Ability("Slam").Name.Should().Be("Slam");
+        }
+
+        [Test]
         public void TimeInfluenceIsPropagatedFromTheCharacter_DownToItsAbilities()
         {
             // Arrange.

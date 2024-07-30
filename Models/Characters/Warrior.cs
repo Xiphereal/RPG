@@ -1,6 +1,4 @@
-﻿using Models.Abilities;
-
-namespace Models.Characters
+﻿namespace Models.Characters
 {
     public class Warrior : Character
     {
@@ -8,7 +6,7 @@ namespace Models.Characters
 
         internal Warrior(int health) : base(health, Resource.Rage)
         {
-            Abilities.Add(Ability.Slam());
+            Abilities.Add(Models.Abilities.Ability.Slam());
         }
 
         public override void LevelUp()
@@ -18,7 +16,7 @@ namespace Models.Characters
             switch (Level)
             {
                 case 2:
-                    Abilities.Add(Ability.Charge());
+                    Abilities.Add(Models.Abilities.Ability.Charge());
                     break;
             }
         }
@@ -27,7 +25,5 @@ namespace Models.Characters
         {
             resource.Gain(howMuch);
         }
-
-
     }
 }

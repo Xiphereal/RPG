@@ -18,6 +18,11 @@ namespace Models.Characters
         public ISet<Ability> Abilities { get; set; } = new HashSet<Ability>();
         public int AttackPower { get; set; } = 20;
 
+        public Ability Ability(string which)
+        {
+            return Abilities.First(x => x.Name == which);
+        }
+
         public virtual void LevelUp()
         {
             Level++;
