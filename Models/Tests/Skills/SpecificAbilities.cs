@@ -91,6 +91,17 @@ namespace Models.Tests.Abilities
         }
 
         [Test]
+        public void BattleShout_IncreasesOwnAttackPower()
+        {
+            Warrior caster = Character.Warrior;
+            caster.LevelUpTo(10);
+
+            Ability.BattleShout().Use(by: caster);
+
+            caster.AttackPower.Should().BeGreaterThan(Character.Warrior.AttackPower);
+        }
+
+        [Test]
         public void BattleShout_Has15secCooldown()
         {
             Ability.BattleShout()

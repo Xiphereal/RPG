@@ -63,7 +63,8 @@ namespace Models.Abilities
                 CooldownInMillis = FifteenSeconds,
             };
 
-            return ability;
+            return ability
+                .With(new AttackPowerVariation(ofPercentage: 0.05));
         }
 
         public int ResourceConsumption { get; private set; }
