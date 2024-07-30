@@ -10,8 +10,8 @@ public partial class DependencyInjection : Control
     {
         Warrior warrior = Character.Warrior;
         warrior.Name = "You";
-        // lvl 2, with Charge.
-        warrior.LevelUp();
+        // With Charge & Battle Shout.
+        LevelUpTo(10, warrior);
         timeAffected.Add(warrior);
 
         GetNode<CharacterFrame>("YourCharacterFrame").Warrior = warrior;
@@ -28,5 +28,11 @@ public partial class DependencyInjection : Control
         // This expects the Timer to tick every second.
         foreach (var target in timeAffected)
             target.PassTime(1000);
+    }
+
+    private static void LevelUpTo(int levels, Character who)
+    {
+        for (int i = 1; i < levels; i++)
+            who.LevelUp();
     }
 }

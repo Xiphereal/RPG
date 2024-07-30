@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cklyov5lu5kpx"]
+[gd_scene load_steps=17 format=3 uid="uid://cklyov5lu5kpx"]
 
 [ext_resource type="PackedScene" uid="uid://cx10o7vl1ury5" path="res://Prefabs/Skill.tscn" id="1_5v14t"]
 [ext_resource type="Script" path="res://Code/Views/DependencyInjection.cs" id="1_iddhj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://jo6r2vp1kwjx" path="res://Assets/Charge.jpg" id="2_jcvb8"]
 [ext_resource type="Script" path="res://Code/Views/TargetFrame.cs" id="3_uoobp"]
 [ext_resource type="Script" path="res://Code/Views/BuffsDebuffs.cs" id="4_n68gy"]
+[ext_resource type="Texture2D" uid="uid://futxbmoitc5h" path="res://Assets/BattleShout.jpg" id="8_h4lhe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k1o2h"]
 bg_color = Color(9.62615e-07, 0.563406, 0.218802, 1)
@@ -29,6 +30,14 @@ unicode = 50
 
 [sub_resource type="Shortcut" id="Shortcut_4co50"]
 events = [SubResource("InputEventKey_oh46s")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4b6r7"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_kil5h"]
+events = [SubResource("InputEventKey_4b6r7")]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -136,7 +145,8 @@ text = "2"
 layout_mode = 2
 
 [node name="Button" parent="ActionBar/HBoxContainer/Skill3" index="0"]
-icon = null
+shortcut = SubResource("Shortcut_kil5h")
+icon = ExtResource("8_h4lhe")
 
 [node name="Binding" parent="ActionBar/HBoxContainer/Skill3" index="1"]
 text = "3"
@@ -209,6 +219,7 @@ autostart = true
 
 [connection signal="pressed" from="ActionBar/HBoxContainer/Skill1/Button" to="ActionBar" method="UseSlam"]
 [connection signal="pressed" from="ActionBar/HBoxContainer/Skill2/Button" to="ActionBar" method="UseCharge"]
+[connection signal="pressed" from="ActionBar/HBoxContainer/Skill3/Button" to="ActionBar" method="UseBattleShout"]
 [connection signal="timeout" from="Timer" to="." method="TimeTicked"]
 
 [editable path="ActionBar/HBoxContainer/Skill1"]

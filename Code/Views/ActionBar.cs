@@ -19,7 +19,6 @@ public partial class ActionBar : Control
 
     private Array<Node> AllButtons => GetChild(0).GetChildren();
 
-
     private void DisplayAbilitiesCDs()
     {
         ForEachAbility((ability, index) =>
@@ -67,5 +66,12 @@ public partial class ActionBar : Control
         Warrior
             .Ability(nameof(Ability.Charge))
             .Use(by: Warrior, on: Target);
+    }
+
+    public void UseBattleShout()
+    {
+        Warrior
+            .Ability(nameof(Ability.BattleShout))
+            .Use(by: Warrior);
     }
 }
