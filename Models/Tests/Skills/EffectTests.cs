@@ -13,7 +13,7 @@ namespace Models.Tests.Abilities
             {
                 HowMuch = 200
             };
-            Ability ability = Ability.SubdueBy(new Time()).With(damage);
+            Ability ability = new Ability().With(damage);
             var target = new Target(health: 200);
 
             ability.Use(by: Character.Warrior, on: target);
@@ -28,7 +28,7 @@ namespace Models.Tests.Abilities
             {
                 Value = 200
             };
-            Ability ability = Ability.SubdueBy(new Time()).With(heal);
+            Ability ability = new Ability().With(heal);
             var target = new Target(health: 200);
 
             ability.Use(by: Character.Warrior, on: target);
@@ -84,7 +84,7 @@ namespace Models.Tests.Abilities
         {
             // Arrange
             var root = new Root(durationInMilis: 1000);
-            Time time = new Time();
+            var time = new Time();
             root.AffectedBy(time);
 
             var character = Character.Warrior;

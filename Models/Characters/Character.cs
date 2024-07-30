@@ -33,6 +33,14 @@ namespace Models.Characters
                 item.AffectedBy(time);
         }
 
+        public override void PassTime(int howMuch = 1)
+        {
+            base.PassTime(howMuch);
+
+            foreach (var ability in Abilities)
+                ability.PassTime(howMuch);
+        }
+
         public void GainExp(int gain)
         {
             Experience += gain;

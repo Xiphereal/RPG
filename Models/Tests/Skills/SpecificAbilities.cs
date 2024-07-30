@@ -17,7 +17,7 @@ namespace Models.Tests.Abilities
             var caster = Character.Warrior;
             var target = Character.Warrior;
 
-            Ability.Slam(time).Use(by: caster, on: target);
+            Ability.Slam().Use(by: caster, on: target);
 
             int damage = Character.Warrior.Health - target.Health;
             damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.35));
@@ -31,7 +31,7 @@ namespace Models.Tests.Abilities
             var target = Character.Warrior;
             caster.GenerateRage(100);
 
-            Ability.Slam(time).Use(by: caster, on: target);
+            Ability.Slam().Use(by: caster, on: target);
 
             caster.Rage.Value.Should().Be(80);
         }
@@ -40,25 +40,36 @@ namespace Models.Tests.Abilities
         public void Charge_DealsDamageBasedOnAttackPower_AndRootsTargetFor1sec()
         {
             // Arrange
-            var time = new Time();
-            var caster = Character.Warrior;
+            var caster = WarriorWithCharge();
             var target = Character.Warrior;
-            target.AffectedBy(time);
+
+            Ability sut = caster.Abilities.First(x => x.Name == "Charge");
 
             // Act
-            Ability.Charge(time).Use(by: caster, on: target);
+            sut.Use(by: caster, on: target);
 
             // Assert
             int damage = Character.Warrior.Health - target.Health;
             damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.21));
 
-            time.Pass();
+            caster.PassTime();
+            target.PassTime();
             target.IsRooted.Should().BeTrue();
 
-            time.Pass(HalfSecond);
+            caster.PassTime(HalfSecond);
+            target.PassTime(HalfSecond);
             target.IsRooted.Should().BeTrue();
-            time.Pass(HalfSecond);
+            caster.PassTime(HalfSecond);
+            target.PassTime(HalfSecond);
             target.IsRooted.Should().BeFalse();
+        }
+
+        private static Warrior WarriorWithCharge()
+        {
+            // Arrange
+            var caster = Character.Warrior;
+            caster.LevelUp();
+            return caster;
         }
 
         [Test]
@@ -72,7 +83,7 @@ namespace Models.Tests.Abilities
             var previusRage = caster.Rage.Value;
 
             // Act
-            Ability.Charge(time).Use(by: caster, on: target);
+            Ability.Charge().Use(by: caster, on: target);
 
             // Assert
             caster.Rage.Value.Should().BeGreaterThan(previusRage);
@@ -83,7 +94,7 @@ namespace Models.Tests.Abilities
         {
             var time = new Time();
 
-            Ability.Charge(time)
+            Ability.Charge()
                 .CooldownInMillis
                 .Should().Be(ToInt(20.Seconds().TotalMilliseconds));
         }

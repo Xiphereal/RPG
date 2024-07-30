@@ -10,7 +10,7 @@ namespace Models.Characters
         {
             var time = new Time();
 
-            Abilities.Add(Ability.Slam(time));
+            Abilities.Add(Ability.Slam());
         }
 
         public override void LevelUp()
@@ -20,7 +20,7 @@ namespace Models.Characters
             switch (Level)
             {
                 case 2:
-                    Abilities.Add(Ability.Charge(new Time()));
+                    Abilities.Add(Ability.Charge());
                     break;
             }
         }
@@ -29,5 +29,7 @@ namespace Models.Characters
         {
             resource.Gain(howMuch);
         }
+
+
     }
 }

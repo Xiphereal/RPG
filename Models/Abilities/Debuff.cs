@@ -16,13 +16,17 @@ namespace Models.Abilities
 
         public void AffectedBy(Time time)
         {
-            time.Tick += (_, _) =>
-            {
+            time.Tick += (_, _) => PassTime();
+        }
+
+        public void PassTime(int howMuch = 1)
+        {
+            for (int i = 0; i < howMuch; i++)
                 RemainingDurationInMilis--;
 
-                IsExpired = RemainingDurationInMilis <= 0;
-            };
+            IsExpired = RemainingDurationInMilis <= 0;
         }
+
         public abstract void Tick(Target on);
 
         public void Apply(Target on, Character? by = null)

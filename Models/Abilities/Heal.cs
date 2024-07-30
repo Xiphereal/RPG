@@ -10,6 +10,10 @@ namespace Models.Abilities
         public void AffectedBy(Time time)
         {
         }
+        public void PassTime(int howMuch)
+        {
+            throw new NotImplementedException();
+        }
 
         public void Apply(Target on, Character? by = null)
         {

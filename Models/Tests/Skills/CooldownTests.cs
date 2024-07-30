@@ -11,21 +11,21 @@ namespace Models.Tests.Abilities
         public void HasUndefinedAsDefaultName()
         {
             var time = new Time();
-            new Ability(time).Name.Should().Be("Undefined");
+            new Ability().Name.Should().Be("Undefined");
         }
 
         [Test]
         public void CanHaveItsOwnName()
         {
             var time = new Time();
-            new Ability(time) { Name = "Any" }.Name.Should().Be("Any");
+            new Ability() { Name = "Any" }.Name.Should().Be("Any");
         }
 
         [Test]
         public void StartWithNoCooldown()
         {
             var time = new Time();
-            new Ability(time) { CooldownInMillis = 1000 }
+            new Ability() { CooldownInMillis = 1000 }
                 .RemainingCooldownInMillis
                 .Should().Be(0);
         }
@@ -34,7 +34,7 @@ namespace Models.Tests.Abilities
         public void Using_aSkill_PutsItOnCooldown()
         {
             var time = new Time();
-            var sut = new Ability(time) { CooldownInMillis = 1000 };
+            var sut = new Ability() { CooldownInMillis = 1000 };
 
             sut.Use(by: Character.Warrior);
 
@@ -44,24 +44,24 @@ namespace Models.Tests.Abilities
         [Test]
         public void PassingTimeReducesCooldown_Linearly()
         {
-            var time = new Time();
-            var sut = new Ability(time) { CooldownInMillis = 1000 };
+            var sut = new Ability() { CooldownInMillis = 1000 };
             sut.Use(by: Character.Warrior);
 
             const int ticks = 3;
-            time.Pass(howMuch: ticks);
+            sut.PassTime(howMuch: ticks);
+
             sut.RemainingCooldownInMillis.Should().Be(sut.CooldownInMillis - ticks);
         }
 
         [Test]
         public void CooldownNeverUnderflows()
         {
-            var time = new Time();
-            var sut = new Ability(time) { CooldownInMillis = 1 };
+            var sut = new Ability() { CooldownInMillis = 1 };
             sut.Use(by: Character.Warrior);
 
             const int ticks = 3;
-            time.Pass(howMuch: ticks);
+            sut.PassTime(howMuch: ticks);
+
             sut.RemainingCooldownInMillis.Should().Be(0);
         }
 
@@ -69,7 +69,7 @@ namespace Models.Tests.Abilities
         public void CanNotBeUsedOnCooldown()
         {
             var time = new Time();
-            var sut = new Ability(time) { CooldownInMillis = 1000 };
+            var sut = new Ability() { CooldownInMillis = 1000 };
 
             sut.Available().Should().BeTrue();
             sut.Use(by: Character.Warrior);
@@ -80,10 +80,10 @@ namespace Models.Tests.Abilities
         [Test]
         public void AreAvailableAgainAfterCooldown()
         {
-            var time = new Time();
-            var sut = new Ability(time) { CooldownInMillis = 1000 };
+            var sut = new Ability() { CooldownInMillis = 1000 };
             sut.Use(by: Character.Warrior);
-            time.Pass(howMuch: sut.CooldownInMillis);
+
+            sut.PassTime(howMuch: sut.CooldownInMillis);
 
             sut.Available().Should().BeTrue();
         }

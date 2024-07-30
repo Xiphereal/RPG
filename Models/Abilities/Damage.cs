@@ -18,5 +18,10 @@ namespace Models.Abilities
         {
             throw new NotImplementedException();
         }
+
+        public void PassTime(int howMuch)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

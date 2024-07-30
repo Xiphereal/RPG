@@ -9,10 +9,7 @@ namespace Models.Tests.Abilities
         [Test]
         public void ConsumesResources()
         {
-            var time = new Time();
-            var sut = Ability
-                .SubdueBy(time)
-                .Consuming(20);
+            var sut = new Ability().Consuming(20);
             var caster = Character.Warrior;
             caster.GenerateRage(100);
 

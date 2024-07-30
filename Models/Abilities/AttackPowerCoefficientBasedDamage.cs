@@ -10,6 +10,9 @@ namespace Models.Abilities
         public void AffectedBy(Time time)
         {
         }
+        public void PassTime(int howMuch)
+        {
+        }
 
         public void Apply(Target on, Character? by = null)
         {

@@ -21,7 +21,7 @@ namespace Models.Tests
 
             Character.Warrior
                 .Abilities
-                .Should().ContainEquivalentOf(Ability.Slam(time));
+                .Should().ContainEquivalentOf(Ability.Slam());
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Models.Tests
 
             warrior
                 .Abilities
-                .Should().ContainEquivalentOf(Ability.Charge(time));
+                .Should().ContainEquivalentOf(Ability.Charge());
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace Models.Tests
         {
             var time = new Time();
             var caster = Character.Warrior;
-            caster.GenerateRage(Ability.Slam(time).ResourceConsumption);
+            caster.GenerateRage(Ability.Slam().ResourceConsumption);
 
             caster.HasAvailable(nameof(Ability.Slam)).Should().BeTrue();
         }
@@ -80,23 +80,19 @@ namespace Models.Tests
         public void TimeInfluenceIsPropagatedFromTheCharacter_DownToItsAbilities()
         {
             // Arrange.
-            var time = new Time();
-
             Character warriorWithCharge = Character.Warrior;
             warriorWithCharge.LevelUp();
 
-            // Act.
-            warriorWithCharge.AffectedBy(time);
-
-            // Assert.
             Ability charge = warriorWithCharge
                 .Abilities
                 .First(x => x.Name == nameof(Ability.Charge));
             charge.Use(by: warriorWithCharge, on: Target.Invencible());
 
+            // Act.
             const int elapsedTime = 1000;
-            time.Pass(elapsedTime);
+            warriorWithCharge.PassTime(elapsedTime);
 
+            // Assert.
             charge.RemainingCooldownInMillis.Should().Be(charge.CooldownInMillis - elapsedTime);
         }
     }

@@ -21,9 +21,9 @@ namespace Models.Abilities
 
         private readonly HashSet<IEffect> effects = [];
 
-        public static Ability Slam(Time time)
+        public static Ability Slam()
         {
-            Ability ability = new(time) { Name = nameof(Slam) };
+            Ability ability = new() { Name = nameof(Slam) };
             ability
                 .With(new AttackPowerCoefficientBasedDamage()
                 {
@@ -34,9 +34,9 @@ namespace Models.Abilities
             return ability;
         }
 
-        public static Ability Charge(Time time)
+        public static Ability Charge()
         {
-            Ability ability = new(time)
+            Ability ability = new()
             {
                 Name = nameof(Charge),
                 CooldownInMillis = TwentySeconds,
@@ -56,11 +56,6 @@ namespace Models.Abilities
         }
 
         public int ResourceConsumption { get; private set; }
-
-        public Ability(Time time)
-        {
-            AffectedBy(time);
-        }
 
         public bool Available()
         {
@@ -84,14 +79,8 @@ namespace Models.Abilities
             RemainingCooldownInMillis = CooldownInMillis;
         }
 
-        public static Ability SubdueBy(Time time)
-        {
-            return new Ability(time);
-        }
-
         public Ability With(IEffect effect)
         {
-            effect.AffectedBy(time);
             effects.Add(effect);
 
             return this;
@@ -107,10 +96,19 @@ namespace Models.Abilities
         public void AffectedBy(Time time)
         {
             this.time = time;
-            this.time.Tick += (_, _) => RemainingCooldownInMillis--;
+            this.time.Tick += (_, _) => PassTime();
 
             foreach (var effect in effects)
                 effect.AffectedBy(time);
+        }
+
+        public void PassTime(int howMuch = 1)
+        {
+            for (int i = 0; i < howMuch; i++)
+                RemainingCooldownInMillis--;
+
+            foreach (var effect in effects)
+                effect.PassTime(howMuch);
         }
     }
 }

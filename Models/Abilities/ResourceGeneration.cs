@@ -11,6 +11,10 @@ namespace Models.Abilities
         {
         }
 
+        public void PassTime(int howMuch)
+        {
+        }
+
         public void Apply(Target on, Character? by = null)
         {
             by!.GenerateResource(Value);
@@ -19,5 +23,7 @@ namespace Models.Abilities
         public void Expire(Target on)
         {
         }
+
+
     }
 }

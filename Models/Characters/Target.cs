@@ -39,7 +39,12 @@ namespace Models.Characters
 
         public virtual void AffectedBy(Time time)
         {
-            time.Tick += (_, _) =>
+            time.Tick += (_, _) => PassTime();
+        }
+
+        public virtual void PassTime(int howMuch = 1)
+        {
+            for (int i = 0; i < howMuch; i++)
             {
                 Debuffs.ForEach(x => x.Tick(this));
 
@@ -47,7 +52,7 @@ namespace Models.Characters
                     .Where(x => x.IsExpired).ToList()
                     .ForEach(x => x.Expire(on: this));
                 Debuffs.RemoveAll(x => x.IsExpired);
-            };
+            }
         }
     }
 }
