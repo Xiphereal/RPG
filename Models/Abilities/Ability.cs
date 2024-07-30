@@ -54,6 +54,13 @@ namespace Models.Abilities
             return ability;
         }
 
+        public static Ability BattleShout()
+        {
+            Ability ability = new() { Name = "Battle Shout" };
+
+            return ability;
+        }
+
         public int ResourceConsumption { get; private set; }
 
         public bool Available()
@@ -100,5 +107,7 @@ namespace Models.Abilities
             foreach (var effect in effects)
                 effect.PassTime(howMuch);
         }
+
+
     }
 }

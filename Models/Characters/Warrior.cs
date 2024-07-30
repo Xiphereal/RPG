@@ -18,6 +18,9 @@
                 case 2:
                     Abilities.Add(Models.Abilities.Ability.Charge());
                     break;
+                case 10:
+                    Abilities.Add(Models.Abilities.Ability.BattleShout());
+                    break;
             }
         }
 

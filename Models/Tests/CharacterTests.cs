@@ -34,6 +34,18 @@ namespace Models.Tests
         }
 
         [Test]
+        public void WarriorLearnsBattleShoutAtLevel10()
+        {
+            Character warrior = Character.Warrior;
+            for (int i = 1; i < 10; i++)
+                warrior.LevelUp();
+
+            warrior
+                .Abilities
+                .Should().ContainEquivalentOf(Ability.BattleShout());
+        }
+
+        [Test]
         public void AbilitiesAreNotAvailable_WhenNotEnoughResources()
         {
             var caster = Character.Warrior;
