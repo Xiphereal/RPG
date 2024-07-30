@@ -48,12 +48,12 @@ namespace Models.Characters
 
         public void ConsumeResource(int howMuch)
         {
-            this.resource.Consume(howMuch);
+            resource.Consume(howMuch);
         }
 
         public void GenerateResource(int howMuch)
         {
-            this.resource.Gain(howMuch);
+            resource.Gain(howMuch);
         }
 
         public bool HasAvailable(string abilityName)
