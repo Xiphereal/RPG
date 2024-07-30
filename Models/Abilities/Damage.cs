@@ -6,9 +6,7 @@ namespace Models.Abilities
     {
         public bool IsExpired { get; set; }
         public int HowMuch { get; set; }
-        public void AffectedBy(Time time)
-        {
-        }
+
         public void Apply(Target on, Character? by = null)
         {
             on.Take(HowMuch);

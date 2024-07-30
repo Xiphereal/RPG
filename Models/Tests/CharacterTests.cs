@@ -17,8 +17,6 @@ namespace Models.Tests
         [Test]
         public void WarriorStartsWithSlam()
         {
-            var time = new Time();
-
             Character.Warrior
                 .Abilities
                 .Should().ContainEquivalentOf(Ability.Slam());
@@ -27,7 +25,6 @@ namespace Models.Tests
         [Test]
         public void WarriorLearnsChargeAtLevel2()
         {
-            var time = new Time();
             Character warrior = Character.Warrior;
             warrior.LevelUp();
 
@@ -39,7 +36,6 @@ namespace Models.Tests
         [Test]
         public void AbilitiesAreNotAvailable_WhenNotEnoughResources()
         {
-            var time = new Time();
             var caster = Character.Warrior;
 
             caster.HasAvailable(nameof(Ability.Slam)).Should().BeFalse();
@@ -48,7 +44,6 @@ namespace Models.Tests
         [Test]
         public void AbilitiesAreAvailable_WhenEnoughResources()
         {
-            var time = new Time();
             var caster = Character.Warrior;
             caster.GenerateRage(Ability.Slam().ResourceConsumption);
 
@@ -58,7 +53,6 @@ namespace Models.Tests
         [Test]
         public void AbilitiesAreNotAvailable_WhenInCooldown()
         {
-            var time = new Time();
             var caster = WarriorWithAbilityWithCD();
 
             Ability ability = caster.Abilities.First(x => x.CooldownInMillis > 0);

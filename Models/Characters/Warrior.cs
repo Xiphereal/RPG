@@ -8,8 +8,6 @@ namespace Models.Characters
 
         internal Warrior(int health) : base(health, Resource.Rage)
         {
-            var time = new Time();
-
             Abilities.Add(Ability.Slam());
         }
 

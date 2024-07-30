@@ -7,9 +7,6 @@ namespace Models.Abilities
         public int Value { get; set; }
         public bool IsExpired { get; set; }
 
-        public void AffectedBy(Time time)
-        {
-        }
         public void PassTime(int howMuch)
         {
             throw new NotImplementedException();

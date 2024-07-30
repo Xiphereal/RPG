@@ -6,7 +6,6 @@ namespace Models.Abilities
     {
         bool IsExpired { get; set; }
 
-        void AffectedBy(Time time);
         void Apply(Target on, Character? by = null);
         void Expire(Target on);
         void PassTime(int howMuch);

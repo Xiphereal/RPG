@@ -37,11 +37,6 @@ namespace Models.Characters
             Debuffs.Add(debuff);
         }
 
-        public virtual void AffectedBy(Time time)
-        {
-            time.Tick += (_, _) => PassTime();
-        }
-
         public virtual void PassTime(int howMuch = 1)
         {
             for (int i = 0; i < howMuch; i++)

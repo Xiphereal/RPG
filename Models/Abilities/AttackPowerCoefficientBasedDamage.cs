@@ -7,9 +7,6 @@ namespace Models.Abilities
         public bool IsExpired { get; set; }
         public double Coefficient { get; set; }
 
-        public void AffectedBy(Time time)
-        {
-        }
         public void PassTime(int howMuch)
         {
         }

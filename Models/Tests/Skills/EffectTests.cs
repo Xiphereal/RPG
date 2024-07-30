@@ -53,10 +53,8 @@ namespace Models.Tests.Abilities
         public void Debuffs_ExpireOverTime()
         {
             var root = new Root(durationInMilis: 1000);
-            var time = new Time();
-            root.AffectedBy(time);
 
-            time.Pass(root.RemainingDurationInMilis);
+            root.PassTime(root.RemainingDurationInMilis);
 
             root.IsExpired.Should().BeTrue();
         }
@@ -67,9 +65,7 @@ namespace Models.Tests.Abilities
         {
             const int initial = 1000;
             var root = new Root(durationInMilis: initial);
-            var time = new Time();
-            root.AffectedBy(time);
-            time.Pass(root.RemainingDurationInMilis);
+            root.PassTime(root.RemainingDurationInMilis);
 
             root.Apply(on: Target.Invencible());
 

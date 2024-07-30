@@ -14,11 +14,6 @@ namespace Models.Abilities
             RemainingDurationInMilis = DurationInMilis;
         }
 
-        public void AffectedBy(Time time)
-        {
-            time.Tick += (_, _) => PassTime();
-        }
-
         public void PassTime(int howMuch = 1)
         {
             for (int i = 0; i < howMuch; i++)

@@ -1,7 +1,6 @@
 namespace Models.Tests.Abilities
 {
     using FluentAssertions;
-    using Models;
     using Models.Abilities;
     using Models.Characters;
 
@@ -10,21 +9,18 @@ namespace Models.Tests.Abilities
         [Test]
         public void HasUndefinedAsDefaultName()
         {
-            var time = new Time();
             new Ability().Name.Should().Be("Undefined");
         }
 
         [Test]
         public void CanHaveItsOwnName()
         {
-            var time = new Time();
             new Ability() { Name = "Any" }.Name.Should().Be("Any");
         }
 
         [Test]
         public void StartWithNoCooldown()
         {
-            var time = new Time();
             new Ability() { CooldownInMillis = 1000 }
                 .RemainingCooldownInMillis
                 .Should().Be(0);
@@ -33,7 +29,6 @@ namespace Models.Tests.Abilities
         [Test]
         public void Using_aSkill_PutsItOnCooldown()
         {
-            var time = new Time();
             var sut = new Ability() { CooldownInMillis = 1000 };
 
             sut.Use(by: Character.Warrior);
@@ -68,7 +63,6 @@ namespace Models.Tests.Abilities
         [Test]
         public void CanNotBeUsedOnCooldown()
         {
-            var time = new Time();
             var sut = new Ability() { CooldownInMillis = 1000 };
 
             sut.Available().Should().BeTrue();

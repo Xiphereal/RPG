@@ -6,7 +6,6 @@ namespace Models.Abilities
     {
         private const int OneSecond = 1000;
         private const int TwentySeconds = 20000;
-        private Time time;
 
         public string Name { get; set; } = "Undefined";
 
@@ -91,15 +90,6 @@ namespace Models.Abilities
             ResourceConsumption = howMuch;
 
             return this;
-        }
-
-        public void AffectedBy(Time time)
-        {
-            this.time = time;
-            this.time.Tick += (_, _) => PassTime();
-
-            foreach (var effect in effects)
-                effect.AffectedBy(time);
         }
 
         public void PassTime(int howMuch = 1)

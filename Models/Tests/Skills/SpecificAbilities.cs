@@ -13,7 +13,6 @@ namespace Models.Tests.Abilities
         [Test]
         public void Slam_DealsDamageBasedOnAttackPower()
         {
-            var time = new Time();
             var caster = Character.Warrior;
             var target = Character.Warrior;
 
@@ -26,7 +25,6 @@ namespace Models.Tests.Abilities
         [Test]
         public void Slam_Consumes20Rage()
         {
-            var time = new Time();
             var caster = Character.Warrior;
             var target = Character.Warrior;
             caster.GenerateRage(100);
@@ -73,10 +71,8 @@ namespace Models.Tests.Abilities
         public void Charge_Generates20Rage()
         {
             // Arrange
-            var time = new Time();
             var caster = Character.Warrior;
             var target = Character.Warrior;
-            target.AffectedBy(time);
             var previusRage = caster.Rage.Value;
 
             // Act
@@ -89,8 +85,6 @@ namespace Models.Tests.Abilities
         [Test]
         public void Charge_Has20secCooldown()
         {
-            var time = new Time();
-
             Ability.Charge()
                 .CooldownInMillis
                 .Should().Be(ToInt(20.Seconds().TotalMilliseconds));

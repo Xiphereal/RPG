@@ -1,9 +1,10 @@
 using Godot;
 using Models.Characters;
+using System.Collections.Generic;
 
 public partial class DependencyInjection : Control
 {
-    private Models.Time time;
+    private IList<Target> timeAffected = [];
 
     public override void _Ready()
     {
@@ -11,15 +12,13 @@ public partial class DependencyInjection : Control
         warrior.Name = "You";
         // lvl 2, with Charge.
         warrior.LevelUp();
-
-        time = new Models.Time();
-        warrior.AffectedBy(time);
+        timeAffected.Add(warrior);
 
         GetNode<CharacterFrame>("YourCharacterFrame").Warrior = warrior;
         GetNode<ActionBar>("ActionBar").Warrior = warrior;
 
         var target = new Target(100);
-        target.AffectedBy(time);
+        timeAffected.Add(target);
         GetNode<ActionBar>("ActionBar").Target = target;
         GetNode<TargetFrame>("TargetFrame").Target = target;
     }
@@ -27,6 +26,7 @@ public partial class DependencyInjection : Control
     public void TimeTicked()
     {
         // This expects the Timer to tick every second.
-        time.Pass(howMuch: 1000);
+        foreach (var target in timeAffected)
+            target.PassTime(1000);
     }
 }
