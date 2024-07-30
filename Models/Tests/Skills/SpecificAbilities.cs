@@ -89,5 +89,13 @@ namespace Models.Tests.Abilities
                 .CooldownInMillis
                 .Should().Be(20.Seconds().TotalMilliseconds.ToInt());
         }
+
+        [Test]
+        public void BattleShout_Has15secCooldown()
+        {
+            Ability.BattleShout()
+                .CooldownInMillis
+                .Should().Be(15.Seconds().TotalMilliseconds.ToInt());
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace Models.Abilities
     public class Ability
     {
         private const int OneSecond = 1000;
+        private const int FifteenSeconds = 15000;
         private const int TwentySeconds = 20000;
 
         public string Name { get; set; } = "Undefined";
@@ -56,7 +57,11 @@ namespace Models.Abilities
 
         public static Ability BattleShout()
         {
-            Ability ability = new() { Name = "Battle Shout" };
+            Ability ability = new()
+            {
+                Name = "Battle Shout",
+                CooldownInMillis = FifteenSeconds,
+            };
 
             return ability;
         }
