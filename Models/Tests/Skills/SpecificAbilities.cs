@@ -41,7 +41,7 @@ namespace Models.Tests.Abilities
             var caster = WarriorWithCharge();
             var target = Character.Warrior;
 
-            Ability sut = caster.Abilities.First(x => x.Name == "Charge");
+            Ability sut = caster.Ability("Charge");
 
             // Act
             sut.Use(by: caster, on: target);

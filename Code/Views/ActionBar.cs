@@ -61,15 +61,15 @@ public partial class ActionBar : Control
 
     public void UseSlam()
     {
-        Warrior.Abilities
-            .First(x => x.Name == nameof(Ability.Slam))
+        Warrior
+            .Ability(nameof(Ability.Slam))
             .Use(by: Warrior, on: Target);
     }
 
     public void UseCharge()
     {
-        Warrior.Abilities
-            .First(x => x.Name == nameof(Ability.Charge))
+        Warrior
+            .Ability(nameof(Ability.Charge))
             .Use(by: Warrior, on: Target);
     }
 }

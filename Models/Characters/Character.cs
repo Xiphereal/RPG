@@ -58,10 +58,8 @@ namespace Models.Characters
 
         public bool HasAvailable(string abilityName)
         {
-            Ability ability = Abilities.Single(x => x.Name == abilityName);
-
-            return ability.ResourceConsumption <= resource.Value
-                && ability.Available();
+            return Ability(abilityName).ResourceConsumption <= resource.Value
+                && Ability(abilityName).Available();
         }
     }
 }
