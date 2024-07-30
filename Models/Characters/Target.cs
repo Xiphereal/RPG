@@ -47,6 +47,7 @@ namespace Models.Characters
             for (int i = 0; i < howMuch; i++)
             {
                 Debuffs.ForEach(x => x.Tick(this));
+                Debuffs.ForEach(x => x.PassTime());
 
                 Debuffs
                     .Where(x => x.IsExpired).ToList()

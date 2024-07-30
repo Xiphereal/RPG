@@ -52,14 +52,11 @@ namespace Models.Tests.Abilities
             int damage = Character.Warrior.Health - target.Health;
             damage.Should().Be(ToInt(Character.Warrior.AttackPower * 0.21));
 
-            caster.PassTime();
             target.PassTime();
             target.IsRooted.Should().BeTrue();
 
-            caster.PassTime(HalfSecond);
             target.PassTime(HalfSecond);
             target.IsRooted.Should().BeTrue();
-            caster.PassTime(HalfSecond);
             target.PassTime(HalfSecond);
             target.IsRooted.Should().BeFalse();
         }

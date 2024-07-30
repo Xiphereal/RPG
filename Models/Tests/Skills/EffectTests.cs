@@ -39,16 +39,13 @@ namespace Models.Tests.Abilities
         [Test]
         public void Characters_CanBeDebuffed()
         {
-            var time = new Time();
             var character = Character.Warrior;
-            character.AffectedBy(time);
             var root = new Root(durationInMilis: 1000);
-            root.AffectedBy(time);
 
             character.Apply(root);
 
             character.Debuffs.Should().Contain(root);
-            time.Pass();
+            character.PassTime();
             character.IsRooted.Should().BeTrue();
         }
 
@@ -83,19 +80,16 @@ namespace Models.Tests.Abilities
         public void CharacterDebuffs_AreRemovedWhenExpired_ThusTheirEffectVanished()
         {
             // Arrange
-            var root = new Root(durationInMilis: 1000);
-            var time = new Time();
-            root.AffectedBy(time);
+            var root = new Root(durationInMilis: 2);
 
             var character = Character.Warrior;
             character.Apply(root);
-            character.AffectedBy(time);
 
-            time.Pass();
+            character.PassTime();
             character.IsRooted.Should().BeTrue();
 
             // Act
-            time.Pass(root.RemainingDurationInMilis);
+            character.PassTime(root.RemainingDurationInMilis);
 
             // Assert
             character.Debuffs.Should().BeEmpty();
