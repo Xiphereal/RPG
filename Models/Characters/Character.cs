@@ -20,7 +20,8 @@ namespace Models.Characters
 
         public Ability Ability(string which)
         {
-            return Abilities.First(x => x.Name == which);
+            return Abilities
+                .First(x => x.Name.Replace(" ", string.Empty) == which);
         }
 
         public virtual void LevelUp()

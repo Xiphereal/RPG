@@ -90,6 +90,16 @@ namespace Models.Tests
         }
 
         [Test]
+        public void AbilitiesCanBeQueried_TakingWhitespacesIntoAccount()
+        {
+            var warrior = Character.Warrior;
+            warrior.LevelUpTo(10);
+
+            warrior.Ability(nameof(Ability.BattleShout)).Name
+                .Should().Be("Battle Shout");
+        }
+
+        [Test]
         public void TimeInfluenceIsPropagatedFromTheCharacter_DownToItsAbilities()
         {
             // Arrange.
